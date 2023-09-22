@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AppReto1</string>
+    <string name="profile">Profile</string>
+    <string name="notification">Notification</string>
 </resources>
