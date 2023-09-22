@@ -9,7 +9,7 @@ public class ActivityEvent extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_Event);
+        setContentView(R.layout.activity_event);
 
     }
 }

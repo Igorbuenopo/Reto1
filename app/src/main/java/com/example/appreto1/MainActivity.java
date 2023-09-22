@@ -1,6 +1,9 @@
 package com.example.appreto1;
 
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -40,10 +43,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (usuario.getText().toString().equals("admin") && contrasenna.getText().toString().equals("1234")) {
 
-                    builder.setMessage("Es admin");
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-                    dialog.getWindow().setLayout(1000, 1600);
+                    Intent cambio = new Intent (MainActivity.this, ActivityCalendar.class);
+
+                    String mensaje = usuario.getText().toString();
+                    cambio.putExtra(EXTRA_MESSAGE, mensaje);
+
+                    startActivity(cambio);
+
 
                 } else {
 
