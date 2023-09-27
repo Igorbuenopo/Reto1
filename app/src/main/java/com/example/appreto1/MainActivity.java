@@ -12,10 +12,22 @@ import android.widget.EditText;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends AppCompatActivity {
 
+
+
+
     @Override
+
+
+
+
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -25,16 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 
-
-        builder.setTitle("Login");
-
-        builder.setPositiveButton("Aceptar", (DialogInterface.OnClickListener) (dialog, which) -> {
-                    // boton de aceptar y cerrar pop-up
-
-                    dialog.cancel();
-                });
 
 
 
@@ -43,15 +46,27 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (usuario.getText().toString().equals("admin") && contrasenna.getText().toString().equals("1234")) {
 
-                    Intent cambio = new Intent (MainActivity.this, ActivityCalendar.class);
+                   Intent cambio = new Intent (MainActivity.this, ActivityCalendar.class);
 
-                    String mensaje = usuario.getText().toString();
-                    cambio.putExtra(EXTRA_MESSAGE, mensaje);
+                   String mensaje = usuario.getText().toString();
 
-                    startActivity(cambio);
+                   cambio.putExtra( "mensaje", mensaje);
+
+                   startActivity(cambio);
 
 
                 } else {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+
+                    builder.setTitle("Login");
+
+                    builder.setPositiveButton("Aceptar", (DialogInterface.OnClickListener) (dialog, which) -> {
+                        // boton de aceptar y cerrar pop-up
+
+                        dialog.cancel();
+                    });
 
                     builder.setMessage("Usuario o contraseña incorrecta");
                     AlertDialog dialog = builder.create();
