@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "138683358176",
-    "project_id": "firestoredemo-9639a",
-    "storage_bucket": "firestoredemo-9639a.appspot.com"
+    "project_number": "390663428932",
+    "project_id": "appeventos-b2a61",
+    "storage_bucket": "appeventos-b2a61.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:138683358176:android:f56870dd14f388c8f96985",
+        "mobilesdk_app_id": "1:390663428932:android:255eaa27f9fe312ab1d511",
         "android_client_info": {
           "package_name": "com.example.appreto1"
         }
@@ -15,26 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyD5PSN_vrYYGdJDxGwfmCiP4BlisD5bP7Q"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:138683358176:android:7e48d9ad980e750af96985",
-        "android_client_info": {
-          "package_name": "com.example.demo3"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyD5PSN_vrYYGdJDxGwfmCiP4BlisD5bP7Q"
+          "current_key": "AIzaSyCIMDSQfLkyJtEwAIiLJ_lo6SssOBHJeCs"
         }
       ],
       "services": {
