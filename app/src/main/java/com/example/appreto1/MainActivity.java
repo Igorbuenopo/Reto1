@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -41,30 +42,74 @@ public class MainActivity extends AppCompatActivity {
         EditText contrasenna = (EditText) findViewById(R.id.editTextContrasenna);
 
         Button confirmar = (Button) findViewById(R.id.buttonConfirmar);
+        Button privado = (Button) findViewById(R.id.ButtonPrivado);
 
 
 
 
          confirmar.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+
+                 String email = usuario.getText().toString();
+                 String password = contrasenna.getText().toString();
+
+                 mAuth.signInWithEmailAndPassword(email, password)
+                         .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                             @Override
+                             public void onComplete(@NonNull Task<AuthResult> task) {
+                                 if (task.isSuccessful()) {
+                                     // Sign in success, update UI with the signed-in user's information
+                                     Log.d(TAG, "signInWithEmail:success");
+                                     FirebaseUser user = mAuth.getCurrentUser();
+
+                                     //intent
+                                     Intent cambio = new Intent(MainActivity.this, ActivityCalendar.class);
+                                     String mensaje = email;
+                                     cambio.putExtra("mensaje", mensaje);
+                                     startActivity(cambio);
+
+                                 } else {
+
+                                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+
+                                     builder.setTitle("Login");
+
+                                     builder.setPositiveButton("Aceptar", (DialogInterface.OnClickListener) (dialog, which) -> {
+                                         // boton de aceptar y cerrar pop-up
+
+                                         dialog.cancel();
+                                     });
+
+                                     builder.setMessage("Usuario o contraseña incorrecta");
+                                     AlertDialog dialog = builder.create();
+                                     dialog.show();
+
+                                 }
+                             }
+                         });
+             }
+
+        });
+
+        privado.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-
-                String email = usuario.getText().toString();
-                String password = contrasenna.getText().toString();
-
-                mAuth.signInWithEmailAndPassword(email, password)
+                mAuth.signInAnonymously()
                         .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
-                                    Log.d(TAG, "signInWithEmail:success");
+                                    Log.d(TAG, "signInAnonymously:success");
                                     FirebaseUser user = mAuth.getCurrentUser();
 
                                     //intent
-                                    Intent cambio = new Intent (MainActivity.this, ActivityCalendar.class);
-                                    String mensaje = email;
-                                    cambio.putExtra( "mensaje", mensaje);
+                                    Intent cambio = new Intent(MainActivity.this, ActivityCalendar.class);
+                                    String mensaje = "Invitado";
+                                    cambio.putExtra("mensaje", mensaje);
                                     startActivity(cambio);
 
                                 } else {
@@ -72,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 
 
-                                    builder.setTitle("Login");
+                                    builder.setTitle("Error login privado");
 
                                     builder.setPositiveButton("Aceptar", (DialogInterface.OnClickListener) (dialog, which) -> {
                                         // boton de aceptar y cerrar pop-up
@@ -80,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
                                         dialog.cancel();
                                     });
 
-                                    builder.setMessage("Usuario o contraseña incorrecta");
+                                    builder.setMessage("Error al intentar iniciar sesion como invitado");
                                     AlertDialog dialog = builder.create();
                                     dialog.show();
 
@@ -88,7 +133,9 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
             }
+
         });
+
     };
 
 }
