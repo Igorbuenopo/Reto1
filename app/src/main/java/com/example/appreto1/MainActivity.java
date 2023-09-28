@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button confirmar = (Button) findViewById(R.id.buttonConfirmar);
         Button privado = (Button) findViewById(R.id.ButtonPrivado);
+        Button registrar = (Button) findViewById(R.id.buttonRegistrarse);
 
 
 
@@ -132,6 +133,60 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             }
                         });
+            }
+
+        });
+
+        registrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String email = usuario.getText().toString();
+                String password = contrasenna.getText().toString();
+
+                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+
+                            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+
+                            builder.setTitle("Usuario creado");
+
+                            builder.setPositiveButton("Aceptar", (DialogInterface.OnClickListener) (dialog, which) -> {
+                                // boton de aceptar y cerrar pop-up
+
+                                dialog.cancel();
+                            });
+
+                            builder.setMessage("Enhorabuena, ya es usted parte de (nombre de app)");
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+
+
+
+                        } else {
+
+                            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+
+                            builder.setTitle("Error Registrar");
+
+                            builder.setPositiveButton("Aceptar", (DialogInterface.OnClickListener) (dialog, which) -> {
+                                // boton de aceptar y cerrar pop-up
+
+                                dialog.cancel();
+                            });
+
+                            builder.setMessage("Error al intentar crear un usuario, porfavor inserte un email y una contraseña de al menos 6 caracteres");
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+
+                        }
+                    }
+                });
+
             }
 
         });
