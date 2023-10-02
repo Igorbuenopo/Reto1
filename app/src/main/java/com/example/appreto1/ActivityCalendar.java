@@ -15,11 +15,11 @@ public class ActivityCalendar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
-        Bundle bundle = getIntent().getExtras();
-        String mensaje = bundle.getString("mensaje");
+        //Bundle bundle = getIntent().getExtras();
+        //String mensaje = bundle.getString("mensaje");
 
-        TextView bienvenida = findViewById(R.id.textviewBienvenida);
-        bienvenida.setText(mensaje);
+        //TextView bienvenida = findViewById(R.id.textviewBienvenida);
+        //bienvenida.setText(mensaje);
 
     }
 }
