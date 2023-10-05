@@ -164,10 +164,55 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Log.d(TAG, "inicio de onclick");
-                Intent cambio = new Intent(MainActivity.this, CreateUserActivity.class);
-                startActivity(cambio);
-                Log.d(TAG, "despues del intent");
+                String email = usuario.getText().toString();
+                String password = contrasenna.getText().toString();
+
+                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+
+                            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+
+                            builder.setTitle("Usuario creado");
+
+                            builder.setPositiveButton("Aceptar", (DialogInterface.OnClickListener) (dialog, which) -> {
+                                // boton de aceptar y cerrar pop-up
+
+                                dialog.cancel();
+                            });
+
+                            builder.setMessage("Enhorabuena, ya es usted parte de (nombre de app)");
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+
+
+
+                        } else {
+
+                            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+
+                            builder.setTitle("Error Registrar");
+
+                            builder.setPositiveButton("Aceptar", (DialogInterface.OnClickListener) (dialog, which) -> {
+                                // boton de aceptar y cerrar pop-up
+
+                                dialog.cancel();
+                            });
+
+                            builder.setMessage("Error al intentar crear un usuario, porfavor inserte un email y una contraseña de al menos 6 caracteres");
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+
+                        }
+                    }
+                });
+                //sharedPreferences escribir
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.putString(getString(R.string.preference_email_user), email);
+                editor.apply();
 
             }
 
