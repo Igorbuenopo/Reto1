@@ -24,6 +24,8 @@ public class ActivityCalcNote extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calcnote);
 
+
+
         resul = findViewById(R.id.idTvResul);
         oper = findViewById(R.id.idTvOper);
 

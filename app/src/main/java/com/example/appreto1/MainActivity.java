@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                                      FirebaseUser user = mAuth.getCurrentUser();
 
                                      //intent
-                                     Intent cambio = new Intent(MainActivity.this, ActivityCalendar.class);
+                                     Intent cambio = new Intent(MainActivity.this, MainActivity2.class);
                                      String mensaje = email;
                                      cambio.putExtra("mensaje", mensaje);
                                      startActivity(cambio);
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
                                     FirebaseUser user = mAuth.getCurrentUser();
 
                                     //intent
-                                    Intent cambio = new Intent(MainActivity.this, ActivityCalendar.class);
+                                    Intent cambio = new Intent(MainActivity.this, MainActivity2.class);
                                     String mensaje = "Invitado";
                                     cambio.putExtra("mensaje", mensaje);
                                     startActivity(cambio);

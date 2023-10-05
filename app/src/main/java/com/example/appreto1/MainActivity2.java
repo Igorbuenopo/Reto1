@@ -1,6 +1,7 @@
 package com.example.appreto1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,15 +16,15 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-<<<<<<< HEAD
-=======
-        Button calendar = findViewById(R.id.idButCalendario);
-        calendar.setOnClickListener(new View.OnClickListener() {
+        CardView c = findViewById(R.id.cardCalcu);
+
+        c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity2.this, ActivityFechas.class);
+                Intent i = new Intent(MainActivity2.this, ActivityCalcNote.class);
                 startActivity(i);
->>>>>>> 4240248e2af75d40917b99e13af957d5e4035c3d
+            }
+        });
 
     }
 }
