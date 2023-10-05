@@ -15,14 +15,6 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        Button calendar = findViewById(R.id.idButCalendario);
-        calendar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity2.this, ActivityCalendar.class);
-                startActivity(i);
 
-            }
-        });
     }
 }
