@@ -4,8 +4,10 @@ import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,27 +29,42 @@ public class MainActivity extends AppCompatActivity {
 
 
     private FirebaseAuth mAuth;
+    SharedPreferences sharedpreferences;
 // ...
 // Initialize Firebase Auth
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
-
         super.onCreate(savedInstanceState);
+
+        //sharedPreferences crear
+        Context context = MainActivity.this;
+        sharedpreferences = context.getSharedPreferences(
+                getString(R.string.preference_email_user), Context.MODE_PRIVATE);
+
+        //sharedPreferences leer
+        String defaultUser = getResources().getString(R.string.preference_email_user);
+        String rememberUser = sharedpreferences.getString(getString(R.string.preference_email_user), defaultUser);
+
+
+        //firebase
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
-        EditText usuario = (EditText) findViewById(R.id.TextImputNombre);
-        EditText contrasenna = (EditText) findViewById(R.id.editTextContrasenna);
 
+        //valores
+        EditText contrasenna = (EditText) findViewById(R.id.editTextContrasenna);
         Button confirmar = (Button) findViewById(R.id.buttonConfirmar);
         Button privado = (Button) findViewById(R.id.ButtonPrivado);
         Button registrar = (Button) findViewById(R.id.buttonRegistrarse);
+        EditText usuario = (EditText) findViewById(R.id.TextImputNombre);
+        //sharedPreferences colocal leido
+        usuario.setText(rememberUser);
 
 
 
 
+        //Iniciar sesion
          confirmar.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
@@ -90,10 +107,15 @@ public class MainActivity extends AppCompatActivity {
                                  }
                              }
                          });
+                //sharedPreferences escribir
+                 SharedPreferences.Editor editor = sharedpreferences.edit();
+                 editor.putString(getString(R.string.preference_email_user), email);
+                 editor.apply();
              }
 
         });
 
+         //entrar como privado
         privado.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -137,6 +159,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+        //crear usuario
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -186,11 +209,19 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
+                //sharedPreferences escribir
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.putString(getString(R.string.preference_email_user), email);
+                editor.apply();
 
             }
 
         });
 
+
+
     };
+
+
 
 }

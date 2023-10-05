@@ -61,4 +61,10 @@
     <string name="calendario">Calendario</string>
     <string name="a_adir_evento">Añadir Evento</string>
     <string name="contactos">Contactos</string>
+
+    <string name="preference_email_user" >
+
+    </string>
+
+
 </resources>
