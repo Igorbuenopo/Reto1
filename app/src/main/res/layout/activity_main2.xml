@@ -23,6 +23,7 @@
         android:layout_below="@+id/topView">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardCalend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cardCornerRadius="15sp"
@@ -59,6 +60,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardContact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cardCornerRadius="15sp"
@@ -85,11 +87,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Transporte"
                     android:layout_gravity="center_horizontal"
+                    android:text="Contactos"
+                    android:textColor="@color/lavander"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/lavander"/>
+                    android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

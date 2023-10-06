@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String email = usuario.getText().toString();
+                String email = txtUsuario.getText().toString();
                 String password = contrasenna.getText().toString();
 
                 mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {

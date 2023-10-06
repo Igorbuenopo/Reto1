@@ -34,12 +34,17 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
 
+    String usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_calendario_evento);
         initWidgets();
+
+        Bundle bundle = getIntent().getExtras();
+        usuario = bundle.getString("usuario");
+
         UTILS.selectedDate = LocalDate.now();
         List<Evento> ejemploEventos = new ArrayList<>();
         Evento evento = new Evento();
@@ -131,6 +136,7 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
             i.putExtra("dia",dayText);
             i.putExtra("mes",UTILS.selectedDate.getMonth().getValue());
             i.putExtra("año", UTILS.selectedDate.getYear());
+            i.putExtra("usuario", usuario);
             startActivity(i);
         }
     }
