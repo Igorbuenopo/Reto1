@@ -19,12 +19,17 @@ import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
+
+import Entidades.Evento;
 
 public class MainActivityCalendarioEvento extends AppCompatActivity implements CalendarAdapter.OnItemListener{
 
     Button siguiente;
     Button anterior;
+
+    Button atras;
 
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
@@ -36,9 +41,23 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
         setContentView(R.layout.activity_main_calendario_evento);
         initWidgets();
         UTILS.selectedDate = LocalDate.now();
+        List<Evento> ejemploEventos = new ArrayList<>();
+        Evento evento = new Evento();
+        ejemploEventos.add(evento);
+        UTILS.ListaEventos = ejemploEventos;
+
         setMonthView();
         siguiente = findViewById(R.id.mesSiguiente);
         anterior = findViewById(R.id.mesAnterior);
+        atras = findViewById(R.id.atras);
+
+        atras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivityCalendarioEvento.this, MainActivity2.class);
+                startActivity(i);
+            }
+        });
 
         siguiente.setOnClickListener(new View.OnClickListener() {
             @Override
