@@ -54,7 +54,7 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
         setMonthView();
         siguiente = findViewById(R.id.mesSiguiente);
         anterior = findViewById(R.id.mesAnterior);
-        atras = findViewById(R.id.atras);
+        //atras = findViewById(R.id.atras);
 
         atras.setOnClickListener(new View.OnClickListener() {
             @Override
