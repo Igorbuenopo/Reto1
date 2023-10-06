@@ -17,6 +17,8 @@ import java.util.Locale;
 
 public class ActivityFechas extends AppCompatActivity {
 
+    // EN DESUSO
+
     private DatePickerDialog datePickerDialog;
     private Button dateButton;
     Button botonHora;

@@ -23,6 +23,8 @@ import Entidades.Fecha;
 
 public class ActivityEvent extends AppCompatActivity {
 
+
+
     //Crear los botones y hacer el onclick despues
     EditText textTitulo;
     EditText textDescripcion;
@@ -47,9 +49,10 @@ public class ActivityEvent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
 
+        //obtenemos el bundle que nos interesa
         Bundle bundle = getIntent().getExtras();
-      //  Fecha fechaEx = bundle; //get el objeto que nos interesa
-        fecha.setAno(2023);
+        //get el objeto que nos interesa
+
 
         //creamos boton de hora y automaticamente le asignamos la hora del sistema con la funcion
         // getHour()
