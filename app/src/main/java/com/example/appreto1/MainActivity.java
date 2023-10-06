@@ -57,9 +57,9 @@ public class MainActivity extends AppCompatActivity {
         Button confirmar = (Button) findViewById(R.id.buttonConfirmar);
         Button privado = (Button) findViewById(R.id.ButtonPrivado);
         Button registrar = (Button) findViewById(R.id.buttonRegistrarse);
-        EditText usuario = (EditText) findViewById(R.id.TextImputNombre);
+        EditText txtUsuario = (EditText) findViewById(R.id.TextImputNombre);
         //sharedPreferences colocal leido
-        usuario.setText(rememberUser);
+        txtUsuario.setText(rememberUser);
 
 
 
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
              @Override
              public void onClick(View view) {
 
-                 String email = usuario.getText().toString();
+                 String email = txtUsuario.getText().toString();
                  String password = contrasenna.getText().toString();
 
                  mAuth.signInWithEmailAndPassword(email, password)
@@ -83,8 +83,8 @@ public class MainActivity extends AppCompatActivity {
 
                                      //intent
                                      Intent cambio = new Intent(MainActivity.this, MainActivity2.class);
-                                     String mensaje = email;
-                                     cambio.putExtra("mensaje", mensaje);
+                                     String usuario = email;
+                                     cambio.putExtra("usuario", usuario);
                                      startActivity(cambio);
 
                                  } else {
