@@ -99,7 +99,8 @@ public class ActivityEvent extends AppCompatActivity {
 
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-                db.collection(usuario).document("Evento [i]").set(evento);
+               // db.collection(usuario).document("Evento [i]").set(evento);
+                db.collection(usuario).add(evento);
 
                 Intent i = new Intent(ActivityEvent.this, MainActivityCalendarioEvento.class);
                 startActivity(i);
