@@ -4,6 +4,7 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -34,7 +35,7 @@ public class ActivityEvent extends AppCompatActivity {
 
     //Strings para almacenarlos en el elemento Evento
     String titulo, descripcion, lugar;
-    String ano, mes, dia;
+    int ano, mes, dia;
 
     //Variables para el TimePicker
     String textoHora;
@@ -51,14 +52,23 @@ public class ActivityEvent extends AppCompatActivity {
 
         //obtenemos el bundle que nos interesa
         Bundle bundle = getIntent().getExtras();
-        //get el objeto que nos interesa
+        ano = bundle.getInt("año");
+        mes = bundle.getInt("mes");
+        dia = bundle.getInt("dia");
+        //get los extras para ir rellenando la fecha, la ponemos en un texto para que el usuario previsualice
+        txtFecha = findViewById(R.id.txtFechaProv);
+        txtFecha.setText(dia+"-"+mes+"-"+ano);
 
+        fecha.setDia(dia);
+        fecha.setMes(mes);
+        fecha.setAno(ano);
 
         //creamos boton de hora y automaticamente le asignamos la hora del sistema con la funcion
         // getHour()
         botonHora = findViewById(R.id.btnHora);
         getHour();
 
+        //Al clickar despliega el reloj para elegir la hora deseada
         botonHora.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,7 +88,12 @@ public class ActivityEvent extends AppCompatActivity {
         btnCrear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            //    crearEvento(titulo,descripcion,lugar,);
+                fecha.setHora(hora);
+                fecha.setAno(ano);
+                Evento evento = new Evento(titulo,descripcion,lugar,fecha);
+
+                Intent i = new Intent(ActivityEvent.this, MainActivityCalendarioEvento.class);
+                startActivity(i);
             }
         });
 

@@ -7,7 +7,7 @@ public class Evento {
     //Variables de uso
     private String titulo;
     private String descripcion;
-    private String fecha; //Ponemos en formato String para poder maniobrar los datos con comodidad
+    private Fecha fecha; //Ponemos en formato String para poder maniobrar los datos con comodidad
     private String lugar;
 
     //GETTERS & SETTERS
@@ -27,7 +27,7 @@ public class Evento {
         this.descripcion = descripcion;
     }
 
-    public String getFecha() {
+    public Fecha getFecha() {
         return fecha;
     }
 
@@ -43,7 +43,7 @@ public class Evento {
         this.lugar = lugar;
     }
     //Constructor con elementos
-    public Evento(String titulo, String descripcion, String lugar, String fecha){
+    public Evento(String titulo, String descripcion, String lugar, Fecha fecha){
         this.titulo=titulo;
         this.descripcion=descripcion;
         this.lugar=lugar;

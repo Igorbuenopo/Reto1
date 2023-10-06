@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -107,6 +108,45 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
         if(!dayText.equals("")){
             String message = "Selected Date "+dayText+" "+monthYearFromDate(UTILS.selectedDate);
             Toast.makeText(this,message, Toast.LENGTH_LONG).show();
+            Intent i = new Intent(MainActivityCalendarioEvento.this, ActivityEvent.class);
+            i.putExtra("dia",dayText);
+            i.putExtra("mes",UTILS.selectedDate.getMonth().getValue());
+            i.putExtra("año", UTILS.selectedDate.getYear());
+            startActivity(i);
         }
+    }
+
+
+    //No se usa, era de emergencia.
+    public int traducirMes(String texto){
+        String mes = texto.substring(0,3);
+        int valor = -1;
+        switch(mes){
+            case "Ene": valor = 1;
+                        break;
+            case "Feb": valor = 2;
+                        break;
+            case "Mar":valor = 3;
+                        break;
+            case "Abr":valor = 4;
+                        break;
+            case "May":valor = 5;
+                        break;
+            case "Jun":valor = 6;
+                        break;
+            case "Jul":valor = 7;
+                        break;
+            case "Ago":valor = 8;
+                        break;
+            case "Sep":valor = 9;
+                        break;
+            case "Oct": valor = 10;
+                        break;
+            case "Nov": valor = 11;
+                        break;
+            case "Dic": valor = 12;
+                        break;
+        }
+        return valor;
     }
 }

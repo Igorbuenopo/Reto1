@@ -31,9 +31,6 @@ public class CreateUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_user);
 
-        //Bundle bundle = getIntent().getExtras();
-       // String mensaje = bundle.getString("mensaje");
-
         mAuth = FirebaseAuth.getInstance();
 
         //valores
