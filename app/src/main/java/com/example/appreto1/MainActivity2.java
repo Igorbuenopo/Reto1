@@ -53,7 +53,7 @@ public class MainActivity2 extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
 
-                                DocumentReference docRef = db.collection(usuario).document("BJ");
+                                DocumentReference docRef = db.collection(usuario).document(document.getId());
                                 docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                     @Override
                                     public void onSuccess(DocumentSnapshot documentSnapshot) {
