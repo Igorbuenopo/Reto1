@@ -22,10 +22,11 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class CreateUserActivity extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
+    private FirebaseAuth mAuth; //Inciar firebase
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
 
         Log.d(TAG, "incioclaseregistrar");
         super.onCreate(savedInstanceState);
@@ -38,7 +39,7 @@ public class CreateUserActivity extends AppCompatActivity {
         Button confirmar = (Button) findViewById(R.id.buttonConfirmarCrear);
         EditText usuario = (EditText) findViewById(R.id.viewUsuario);
 
-
+        //listener para el boton de crear usuario
         confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
