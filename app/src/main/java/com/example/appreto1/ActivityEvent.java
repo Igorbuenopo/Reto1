@@ -15,6 +15,8 @@ import android.widget.TimePicker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -44,17 +46,20 @@ public class ActivityEvent extends AppCompatActivity {
 
     Fecha fecha = new Fecha();
 
+    String usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
 
+
         //obtenemos el bundle que nos interesa
         Bundle bundle = getIntent().getExtras();
         ano = bundle.getInt("año");
         mes = bundle.getInt("mes");
         dia = bundle.getInt("dia");
+        usuario = bundle.getString("usuario");
         //get los extras para ir rellenando la fecha, la ponemos en un texto para que el usuario previsualice
         txtFecha = findViewById(R.id.txtFechaProv);
         txtFecha.setText(dia+"-"+mes+"-"+ano);
@@ -91,6 +96,11 @@ public class ActivityEvent extends AppCompatActivity {
                 fecha.setHora(hora);
                 fecha.setAno(ano);
                 Evento evento = new Evento(titulo,descripcion,lugar,fecha);
+
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+               // db.collection(usuario).document("Evento [i]").set(evento);
+                db.collection(usuario).add(evento);
 
                 Intent i = new Intent(ActivityEvent.this, MainActivityCalendarioEvento.class);
                 startActivity(i);

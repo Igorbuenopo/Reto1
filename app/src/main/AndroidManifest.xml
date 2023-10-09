@@ -32,7 +32,10 @@
 
 
     </activity>
+        <activity android:name=".ActivityEvent"
+            android:exported="true">
 
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true" >

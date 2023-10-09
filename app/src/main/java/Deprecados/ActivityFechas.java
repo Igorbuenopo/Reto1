@@ -1,4 +1,4 @@
-package com.example.appreto1;
+package Deprecados;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -11,6 +11,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.appreto1.R;
 
 import java.util.Calendar;
 import java.util.Locale;
