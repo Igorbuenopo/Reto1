@@ -35,6 +35,11 @@ public class MainActivity2 extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         String usuario = bundle.getString("usuario");
 
+
+        CardView calcu = findViewById(R.id.cardCalcu);
+        CardView calend = findViewById(R.id.cardCalend);
+
+
         CardView calc = findViewById(R.id.cardCalcu);
         CardView calen = findViewById(R.id.cardCalend);
 
@@ -87,6 +92,14 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity2.this, ActivityCalcNote.class);
 
+                startActivity(i);
+            }
+        });
+
+        calend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity2.this, MainActivityCalendarioEvento.class);
                 startActivity(i);
             }
         });

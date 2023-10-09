@@ -1,5 +1,6 @@
 package com.example.appreto1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -17,7 +18,7 @@ public class ActivityCalcNote extends AppCompatActivity implements View.OnClickL
     MaterialButton bC, bOB, bCB, b0, b1, b2, b3, b4, b5, b6, b7, b8, b9;
     MaterialButton butSum, butRes, butMul, butDiv, butIgual;
 
-    MaterialButton bAc, bPunto;
+    MaterialButton bAc, bPunto, bSalir;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,7 @@ public class ActivityCalcNote extends AppCompatActivity implements View.OnClickL
         asignarId(bAc, R.id.idButAC);
         asignarId(bPunto, R.id.idButPunto);
 
+
     }
 
     void asignarId (MaterialButton but, int id){
@@ -65,29 +67,34 @@ public class ActivityCalcNote extends AppCompatActivity implements View.OnClickL
         String botonTexto = but.getText().toString();
         String calcular = oper.getText().toString();
 
-        if(botonTexto.equals("AC")){
-            oper.setText("");
-            resul.setText("0");
-            return;
-        }
+        if(botonTexto.equals("X")){
+            Intent i = new Intent(ActivityCalcNote.this, MainActivity2.class);
+            startActivity(i);
+        }else {
+            if (botonTexto.equals("AC")) {
+                oper.setText("");
+                resul.setText("0");
+                return;
+            }
 
-        if(botonTexto.equals("=")){
-            oper.setText(resul.getText());
-            return;
-        }
+            if (botonTexto.equals("=")) {
+                oper.setText(resul.getText());
+                return;
+            }
 
-        if(botonTexto.equals("C")){
-            calcular = calcular.substring(0, calcular.length()-1);
-        }else{
-            calcular = calcular + botonTexto;
-        }
+            if (botonTexto.equals("C")) {
+                calcular = calcular.substring(0, calcular.length() - 1);
+            } else {
+                calcular = calcular + botonTexto;
+            }
 
-        oper.setText(calcular);
+            oper.setText(calcular);
 
-        String resultadoFinal = getResult(calcular);
+            String resultadoFinal = getResult(calcular);
 
-        if(!resultadoFinal.equals("Error")){
-            resul.setText(resultadoFinal);
+            if (!resultadoFinal.equals("Error")) {
+                resul.setText(resultadoFinal);
+            }
         }
     }
 

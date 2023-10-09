@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Locale;
 
 import Entidades.Evento;
+import Entidades.Fecha;
 
 public class MainActivityCalendarioEvento extends AppCompatActivity implements CalendarAdapter.OnItemListener{
 
@@ -47,23 +48,24 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
 
         UTILS.selectedDate = LocalDate.now();
         List<Evento> ejemploEventos = new ArrayList<>();
-        Evento evento = new Evento();
+        Fecha f = new Fecha(23,10,2023,7,0);
+        Evento evento = new Evento("Cumple", "si", "Locuiron",f);
         ejemploEventos.add(evento);
         UTILS.ListaEventos = ejemploEventos;
 
         setMonthView();
         siguiente = findViewById(R.id.mesSiguiente);
         anterior = findViewById(R.id.mesAnterior);
-        //atras = findViewById(R.id.atras);
+      //  atras = findViewById(R.id.atras);
 
-        atras.setOnClickListener(new View.OnClickListener() {
+    /*    atras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivityCalendarioEvento.this, MainActivity2.class);
                 startActivity(i);
             }
         });
-
+*/
         siguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,7 +135,7 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
             String message = "Selected Date "+dayText+" "+monthYearFromDate(UTILS.selectedDate);
             Toast.makeText(this,message, Toast.LENGTH_LONG).show();
             Intent i = new Intent(MainActivityCalendarioEvento.this, ActivityEvent.class);
-            i.putExtra("dia",dayText);
+            i.putExtra("dia",Integer.valueOf(dayText));
             i.putExtra("mes",UTILS.selectedDate.getMonth().getValue());
             i.putExtra("año", UTILS.selectedDate.getYear());
             i.putExtra("usuario", usuario);

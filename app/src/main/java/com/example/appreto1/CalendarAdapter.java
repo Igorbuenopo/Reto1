@@ -53,9 +53,19 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
             if(date.equals(a)){
                 holder.itemView.setBackgroundColor(Color.LTGRAY);
             }
+
+            for(int i = 0; i < UTILS.ListaEventos.size(); i++){
+
+                int anyo = UTILS.ListaEventos.get(i).getFecha().getAno();
+                int mes = UTILS.ListaEventos.get(i).getFecha().getMes();
+                int dia = UTILS.ListaEventos.get(i).getFecha().getDia();
+
+                LocalDate local = LocalDate.of(anyo, mes, dia);
+                if(date.equals(local)){
+                    holder.itemView.setBackgroundColor(Color.RED);
+                }
+            }
         }
-
-
 
 
 
