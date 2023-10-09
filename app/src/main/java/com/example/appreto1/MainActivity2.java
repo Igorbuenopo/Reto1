@@ -32,12 +32,9 @@ public class MainActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
         Bundle bundle = getIntent().getExtras();
         String usuario = bundle.getString("usuario");
-
-
-        CardView calcu = findViewById(R.id.cardCalcu);
-        CardView calend = findViewById(R.id.cardCalend);
 
 
         CardView calc = findViewById(R.id.cardCalcu);
@@ -50,8 +47,7 @@ public class MainActivity2 extends AppCompatActivity {
         //sacar documentos
         ArrayList <Evento> eventos = new ArrayList<Evento>();
 
-        db.collection(usuario).get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection(usuario).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
@@ -81,8 +77,8 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(MainActivity2.this,MainActivityCalendarioEvento.class);
-                i.putExtra("usuario",usuario);
-                i.putExtra("eventos",eventos);
+               i.putExtra("usuario",usuario);
+               i.putExtra("eventos",eventos);
                 startActivity(i);
             }
         });
@@ -91,15 +87,6 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity2.this, ActivityCalcNote.class);
-
-                startActivity(i);
-            }
-        });
-
-        calend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity2.this, MainActivityCalendarioEvento.class);
                 startActivity(i);
             }
         });
