@@ -16,12 +16,21 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        CardView c = findViewById(R.id.cardCalcu);
+        CardView calcu = findViewById(R.id.cardCalcu);
+        CardView calend = findViewById(R.id.cardCalend);
 
-        c.setOnClickListener(new View.OnClickListener() {
+        calcu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity2.this, ActivityCalcNote.class);
+                startActivity(i);
+            }
+        });
+
+        calend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity2.this, MainActivityCalendarioEvento.class);
                 startActivity(i);
             }
         });

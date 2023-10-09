@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Locale;
 
 import Entidades.Evento;
+import Entidades.Fecha;
 
 public class MainActivityCalendarioEvento extends AppCompatActivity implements CalendarAdapter.OnItemListener{
 
@@ -42,7 +43,8 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
         initWidgets();
         UTILS.selectedDate = LocalDate.now();
         List<Evento> ejemploEventos = new ArrayList<>();
-        Evento evento = new Evento();
+        Fecha f = new Fecha(23,10,2023,7,0);
+        Evento evento = new Evento("Cumple", "si", "Locuiron",f);
         ejemploEventos.add(evento);
         UTILS.ListaEventos = ejemploEventos;
 
