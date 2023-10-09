@@ -44,7 +44,7 @@ public class ActivityEvent extends AppCompatActivity {
     Button botonHora;
     int hora, minuto;
 
-    Fecha fecha = new Fecha();
+   // Fecha fecha = new Fecha();
 
     String usuario;
 
@@ -59,14 +59,13 @@ public class ActivityEvent extends AppCompatActivity {
         ano = bundle.getInt("año");
         mes = bundle.getInt("mes");
         dia = bundle.getInt("dia");
+
         usuario = bundle.getString("usuario");
         //get los extras para ir rellenando la fecha, la ponemos en un texto para que el usuario previsualice
         txtFecha = findViewById(R.id.txtFechaProv);
         txtFecha.setText(dia+"-"+mes+"-"+ano);
 
-        fecha.setDia(dia);
-        fecha.setMes(mes);
-        fecha.setAno(ano);
+
 
         //creamos boton de hora y automaticamente le asignamos la hora del sistema con la funcion
         // getHour()
@@ -91,18 +90,20 @@ public class ActivityEvent extends AppCompatActivity {
         btnCrear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fecha.setHora(hora);
-                fecha.setAno(ano);
+
+
                 titulo = textTitulo.getText().toString();
                 descripcion = textDescripcion.getText().toString();
                 lugar = textLugar.getText().toString();
 
-                Evento evento = new Evento(titulo,descripcion,lugar,fecha);
+
+                Evento evento = new Evento(titulo,descripcion,hora,minuto,dia,mes,ano,lugar);
 
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
 
                // db.collection(usuario).document("Evento [i]").set(evento);
-                db.collection(usuario).add(evento);
+                db.collection(usuario).document("Evento "+1).set(evento);
+             //   db.collection(usuario).add(evento);
 
                 Intent i = new Intent(ActivityEvent.this, MainActivityCalendarioEvento.class);
                 i.putExtra("usuario",usuario);
@@ -132,13 +133,14 @@ public class ActivityEvent extends AppCompatActivity {
     //Funcion para recoger los datos de los textviews y crear un elemento de tipo Evento
     public void crearEvento(String textoTitulo, String textoDescripcion,String textoLugar, int hora, int minuto ){
         Evento event = new Evento();
-        Fecha fecha = new Fecha();
-        fecha.setHora(hora);
-        fecha.setMinuto(minuto);
         event.setTitulo(textoTitulo);
         event.setDescripcion(textoDescripcion);
         event.setLugar(textoLugar);
-        event.setFecha(fecha.toString());
+        event.setDia(dia);
+        event.setMes(mes);
+        event.setAno(ano);
+        event.setHora(hora);
+        event.setMinuto(minuto);
     }
 
     //metodo para coger la hora del sistema
