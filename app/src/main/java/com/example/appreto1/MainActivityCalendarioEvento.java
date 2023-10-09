@@ -51,16 +51,17 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
         setMonthView();
         siguiente = findViewById(R.id.mesSiguiente);
         anterior = findViewById(R.id.mesAnterior);
-      //  atras = findViewById(R.id.atras);
+        atras = findViewById(R.id.atras);
 
-    /*    atras.setOnClickListener(new View.OnClickListener() {
+       atras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivityCalendarioEvento.this, MainActivity2.class);
+                i.putExtra("usuario",usuario);
                 startActivity(i);
             }
-        });
-*/
+       });
+
         siguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
