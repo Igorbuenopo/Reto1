@@ -47,11 +47,6 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
         usuario = bundle.getString("usuario");
 
         UTILS.selectedDate = LocalDate.now();
-        List<Evento> ejemploEventos = new ArrayList<>();
-        Fecha f = new Fecha(23,10,2023,7,0);
-        Evento evento = new Evento("Cumple", "si", "Locuiron",f);
-        ejemploEventos.add(evento);
-        UTILS.ListaEventos = ejemploEventos;
 
         setMonthView();
         siguiente = findViewById(R.id.mesSiguiente);

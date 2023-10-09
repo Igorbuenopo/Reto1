@@ -85,9 +85,7 @@ public class ActivityEvent extends AppCompatActivity {
         textDescripcion = findViewById(R.id.txtDescripcion);
         textLugar = findViewById(R.id.txtLugar);
 
-        titulo = textTitulo.getText().toString();
-        descripcion = textDescripcion.getText().toString();
-        lugar = textLugar.getText().toString();
+
 
         btnCrear = findViewById(R.id.btnCrear);
         btnCrear.setOnClickListener(new View.OnClickListener() {
@@ -95,6 +93,10 @@ public class ActivityEvent extends AppCompatActivity {
             public void onClick(View v) {
                 fecha.setHora(hora);
                 fecha.setAno(ano);
+                titulo = textTitulo.getText().toString();
+                descripcion = textDescripcion.getText().toString();
+                lugar = textLugar.getText().toString();
+
                 Evento evento = new Evento(titulo,descripcion,lugar,fecha);
 
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -103,6 +105,7 @@ public class ActivityEvent extends AppCompatActivity {
                 db.collection(usuario).add(evento);
 
                 Intent i = new Intent(ActivityEvent.this, MainActivityCalendarioEvento.class);
+                i.putExtra("usuario",usuario);
                 startActivity(i);
             }
         });

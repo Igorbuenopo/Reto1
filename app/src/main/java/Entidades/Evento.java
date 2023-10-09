@@ -7,7 +7,7 @@ public class Evento {
     //Variables de uso
     private String titulo;
     private String descripcion;
-    private Fecha fecha; //Ponemos en formato String para poder maniobrar los datos con comodidad
+    private Fecha fecha;
     private String lugar;
 
     //GETTERS & SETTERS
