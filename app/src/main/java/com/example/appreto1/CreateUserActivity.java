@@ -19,6 +19,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import Entidades.Evento;
+import Entidades.Nota;
 
 public class CreateUserActivity extends AppCompatActivity {
 
@@ -51,6 +55,7 @@ public class CreateUserActivity extends AppCompatActivity {
                 mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(CreateUserActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+
                         if (task.isSuccessful()) {
                             //si funciona avisar al usuario
                             AlertDialog.Builder builder = new AlertDialog.Builder(CreateUserActivity.this);
@@ -63,6 +68,14 @@ public class CreateUserActivity extends AppCompatActivity {
 
                                 dialog.cancel();
                             });
+
+                            FirebaseFirestore db = FirebaseFirestore.getInstance();
+                            Evento evento = new Evento();
+                            evento.setTitulo("1");
+                            db.collection(email).document("Evento"+1).set(evento);
+
+                            Nota nota = new Nota();
+                            db.collection(email.concat(".notas")).document("Nota"+1).set(nota);
 
                             builder.setMessage("Enhorabuena, ya es usted parte de (nombre de app)");
                             AlertDialog dialog = builder.create();
