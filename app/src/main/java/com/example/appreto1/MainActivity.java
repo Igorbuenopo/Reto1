@@ -28,10 +28,10 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    //
     private FirebaseAuth mAuth;
     SharedPreferences sharedpreferences;
-// ...
+// Initialize SharedPreferences
 // Initialize Firebase Auth
 
     @Override
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
-        //sharedPreferences crear
+        //sharedPreferences crear variable
         Context context = MainActivity.this;
         sharedpreferences = context.getSharedPreferences(
                 getString(R.string.preference_email_user), Context.MODE_PRIVATE);
@@ -49,23 +49,24 @@ public class MainActivity extends AppCompatActivity {
         String rememberUser = sharedpreferences.getString(getString(R.string.preference_email_user), defaultUser);
 
 
-        //firebase
+        //firebase crear variable
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
 
-        //valores
+        //Inicializar diferentes textviews que usara el usuario y los botones
         EditText contrasenna = (EditText) findViewById(R.id.editTextContrasenna);
         Button confirmar = (Button) findViewById(R.id.buttonConfirmar);
         Button privado = (Button) findViewById(R.id.ButtonPrivado);
         Button registrar = (Button) findViewById(R.id.buttonRegistrarse);
         EditText txtUsuario = (EditText) findViewById(R.id.TextImputNombre);
-        //sharedPreferences colocal leido
+
+        //sharedPreferences colocar lo leido del archivo
         txtUsuario.setText(rememberUser);
 
 
 
 
-        //Iniciar sesion
+        //Iniciar sesion listener
          confirmar.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
@@ -108,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
                                  }
                              }
                          });
-                //sharedPreferences escribir
+                //sharedPreferences escribir en el archivo
                  SharedPreferences.Editor editor = sharedpreferences.edit();
                  editor.putString(getString(R.string.preference_email_user), email);
                  editor.apply();
@@ -116,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-         //entrar como privado
+         //entrar como privado listener
         privado.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -160,11 +161,11 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        //crear usuario
+        //crear usuario listener
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                //enviar a la pestaña de crear usuario
                 Intent cambio = new Intent(MainActivity.this, CreateUserActivity.class);
                 startActivity(cambio);
 
