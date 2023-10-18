@@ -91,20 +91,20 @@ public class MainActivity extends AppCompatActivity {
 
                                  } else {
 
-                                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                                  //   AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 
 
-                                     builder.setTitle("Login");
+                                   //  builder.setTitle("Login");
 
-                                     builder.setPositiveButton("Aceptar", (DialogInterface.OnClickListener) (dialog, which) -> {
+                                   //  builder.setPositiveButton("Aceptar", (DialogInterface.OnClickListener) (dialog, which) -> {
                                          // boton de aceptar y cerrar pop-up
 
-                                         dialog.cancel();
-                                     });
-
-                                     builder.setMessage("Usuario o contraseña incorrecta");
-                                     AlertDialog dialog = builder.create();
-                                     dialog.show();
+                                      //   dialog.cancel();
+                                  //   });
+                                     txtUsuario.setError("Usuario o contrtaseña incorrecta");
+                                     //builder.setMessage("Usuario o contraseña incorrecta");
+                                    // AlertDialog dialog = builder.create();
+                                    // dialog.show();
 
                                  }
                              }
