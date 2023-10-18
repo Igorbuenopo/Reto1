@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
                                     //intent
                                     Intent cambio = new Intent(MainActivity.this, MainActivity2.class);
                                     String mensaje = "Invitado";
-                                    cambio.putExtra("mensaje", mensaje);
+                                    cambio.putExtra("usuario", mensaje);
                                     startActivity(cambio);
 
                                 } else {
