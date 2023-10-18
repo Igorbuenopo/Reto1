@@ -68,11 +68,13 @@
 
     </string>
 
+
+
     //MainActivity
 
     <string name="login" translatable="false">Login</string>
-    <string name="TextImputNombre" hint="Email" translatable="false"></string>
-    <string name="editTextContrasenna" hint="Contraseña"></string>
+    <string name="TextImputNombre"  translatable="false">Email</string>
+    <string name="editTextContrasenna" >Contraseña</string>
     <string name="buttonConfirmar" >ACEPTAR</string>
     <string name="preguntaRegistro" >¿No estás registrado?</string>
     <string name="buttonRegistrarse" >REGISTRARSE</string>

@@ -53,7 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Calendario"
+                    android:text="@string/main2CalendarioText"
                     android:textColor="@color/lavander"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -90,7 +90,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Contactos"
+                    android:text="@string/main2ContactosText"
                     android:textColor="@color/lavander"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -128,7 +128,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Calculadora"
+                    android:text="@string/main2CalculadoraText"
                     android:textColor="@color/lavander"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -164,7 +164,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Notas"
+                    android:text="@string/main2NotasText"
                     android:textColor="@color/lavander"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -200,7 +200,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Cerrar sesión"
+                    android:text="@string/main2CerrarText"
                     android:textColor="@color/lavander"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -251,7 +251,7 @@
         android:id="@+id/bienvenidoTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="¡Bienvenido!"
+        android:text="@string/bienvenidoTv"
         android:textColor="@color/white"
         android:textSize="36sp"
         android:textStyle="bold"
