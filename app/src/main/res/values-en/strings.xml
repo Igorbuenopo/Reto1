@@ -70,13 +70,11 @@
 
     //MainActivity
 
-
     <string name="editTextContrasenna" >Password</string>
     <string name="buttonConfirmar" >CONFIRM</string>
     <string name="preguntaRegistro" >Are you not registered yet?</string>
     <string name="buttonRegistrarse" >REGISTER</string>
     <string name="ButtonPrivado" >GUEST MODE</string>
-
     //MainActivity2
 
     <string name="bienvenidoTv" >WELCOME!</string>
@@ -85,5 +83,6 @@
     <string name="main2CalculadoraText" >Calculator</string>
     <string name="main2NotasText" >Notes</string>
     <string name="main2CerrarText" >Log out</string>
+
 
 </resources>
