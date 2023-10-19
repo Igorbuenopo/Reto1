@@ -4,16 +4,15 @@ import java.util.Locale;
 
 public class Contacto {
     String nombre;
-
     int numero;
     String direccion;
-    String descripcion;
+
 
     public Contacto(String nombre, int numero, String direccion, String descripcion) {
         this.nombre = nombre;
         this.numero = numero;
         this.direccion = direccion;
-        this.descripcion = descripcion;
+
     }
 
     public Contacto() {
@@ -44,15 +43,7 @@ public class Contacto {
         this.numero = numero;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
     public String toString() {
-        return "Contacto - Nombre: " +nombre +" - Numero: " +numero +" - Direccion: " +direccion +" -Descripcion: " +descripcion;
+        return "Contacto - Nombre: " +nombre +" - Numero: " +numero +" - Direccion: " +direccion;
     }
 }
