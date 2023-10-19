@@ -38,7 +38,7 @@ public class CreateUserActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        //valores
+        //inicializar textviews y botones
         EditText contrasenna = (EditText) findViewById(R.id.viewPass);
         Button confirmar = (Button) findViewById(R.id.buttonConfirmarCrear);
         EditText usuario = (EditText) findViewById(R.id.viewUsuario);
@@ -47,16 +47,17 @@ public class CreateUserActivity extends AppCompatActivity {
         confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                //sacar email y contraseña
                 String email = usuario.getText().toString();
                 String password = contrasenna.getText().toString();
 
+                //crear usuario en AUTH
                 mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(CreateUserActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if (task.isSuccessful()) {
-
+                            //si funciona avisar al usuario
                             AlertDialog.Builder builder = new AlertDialog.Builder(CreateUserActivity.this);
 
 
@@ -84,7 +85,7 @@ public class CreateUserActivity extends AppCompatActivity {
                             startActivity(cambio);
 
                         } else {
-
+                            // si NO funciona avisar al usuario
                             AlertDialog.Builder builder = new AlertDialog.Builder(CreateUserActivity.this);
 
 
