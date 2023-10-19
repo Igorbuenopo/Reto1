@@ -164,14 +164,8 @@ public class MainActivity extends AppCompatActivity {
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent cambio = new Intent(MainActivity.this, CreateUserActivity.class);
                 startActivity(cambio);
-
-
-
-
-
             }
 
         });

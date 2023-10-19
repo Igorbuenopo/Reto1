@@ -67,7 +67,7 @@ public class CreateUserActivity extends AppCompatActivity {
 
                                 dialog.cancel();
                             });
-
+/*
                             FirebaseFirestore db = FirebaseFirestore.getInstance();
                             Evento evento = new Evento();
                             evento.setTitulo("1");
@@ -75,7 +75,7 @@ public class CreateUserActivity extends AppCompatActivity {
 
                             Nota nota = new Nota();
                             db.collection(email.concat(".notas")).document("Nota"+1).set(nota);
-
+*/
                             builder.setMessage("Enhorabuena, ya es usted parte de (nombre de app)");
                             AlertDialog dialog = builder.create();
                             dialog.show();
