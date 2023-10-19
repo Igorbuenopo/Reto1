@@ -42,7 +42,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         CardView calc = findViewById(R.id.cardCalcu);
         CardView calen = findViewById(R.id.cardCalend);
-
+        CardView contact = findViewById(R.id.cardContact);
 
         //firebase database initialise
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -57,12 +57,8 @@ public class MainActivity2 extends AppCompatActivity {
 
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-
                             AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity2.this);
-
-
                             builder.setTitle("Cargando");
-
 
                             builder.setMessage("Sacando datos, porfavor esepere...");
                             AlertDialog dialog = builder.create();
@@ -111,5 +107,12 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
 
+        contact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity2.this, ActivityContactos.class);
+                startActivity(i);
+            }
+        });
     }
 }
