@@ -56,6 +56,7 @@ public class MainActivity2 extends AppCompatActivity {
                     @Override
 
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
                         if (task.isSuccessful()) {
 
                             AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity2.this);
@@ -98,7 +99,7 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i= new Intent(MainActivity2.this,MainActivityCalendarioEvento.class);
                i.putExtra("usuario",usuario);
-               i.putExtra("eventos",eventos);
+               i.putExtra("eventos", eventos);
                 startActivity(i);
             }
         });

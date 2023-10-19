@@ -67,7 +67,7 @@
     </string>
     //MainActivity
 
-    <string name="login" translatable="false">Login</string>
+    <string name="login" >Iniciar sesion</string>
     <string name="TextImputNombre"  translatable="false">Email</string>
     <string name="editTextContrasenna" >Contraseña</string>
     <string name="buttonConfirmar" >ACEPTAR</string>
@@ -87,23 +87,7 @@
     <string name="main2Notas" >Notas</string>
     <string name="main2Cerrar" >Cerra sesión</string>
 
-    //MainActivity
 
-    <string name="login" translatable="false">Login</string>
-    <string name="TextImputNombre"  translatable="false">Email</string>
-    <string name="editTextContrasenna" >Contraseña</string>
-    <string name="buttonConfirmar" >ACEPTAR</string>
-    <string name="preguntaRegistro" >¿No estás registrado?</string>
-    <string name="buttonRegistrarse" >REGISTRARSE</string>
-    <string name="ButtonPrivado" >MODO INVITADO</string>
-    //MainActivity2
-
-    <string name="bienvenidoTv" >¡BIENVENIDO!</string>
-    <string name="main2CalendarioText" >Calendario</string>
-    <string name="main2ContactosText" >Contactos</string>
-    <string name="main2CalculadoraText" >Calculadora</string>
-    <string name="main2NotasText" >Notas</string>
-    <string name="main2CerrarText" >Cerrar Sesion</string>
 
 
 

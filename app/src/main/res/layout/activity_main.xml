@@ -47,7 +47,7 @@
                 android:id="@+id/login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Iniciar sesión"
+                android:text="@string/login"
                 android:textAlignment="center"
                 android:textColor="@color/purple"
                 android:textSize="@dimen/_32sdp"
@@ -78,8 +78,10 @@
                 android:inputType="numberPassword"
                 android:padding="8sp"
                 android:textColor="@color/color"
-                android:textColorHighlight="@color/cardview_dark_background"
-                android:hint="@string/editTextContrasenna"/>
+                android:hint="@string/editTextContrasenna"
+                android:textColorHighlight="@color/cardview_dark_background"/>
+
+
 
             <Button
                 android:id="@+id/buttonConfirmar"
@@ -109,7 +111,7 @@
         android:layout_width="@dimen/_160sdp"
         android:layout_height="@dimen/_44sdp"
         android:id="@+id/buttonRegistrarse"
-        android:text="REGISTRARSE"
+        android:text="@string/buttonRegistrarse"
         android:textSize="@dimen/_14sdp"
         android:layout_marginTop="@dimen/_18sdp"
         android:backgroundTint="@color/azulLogo"
@@ -120,7 +122,7 @@
         android:layout_width="@dimen/_160sdp"
         android:layout_height="@dimen/_44sdp"
         android:id="@+id/ButtonPrivado"
-        android:text="MODO INVITADO"
+        android:text="@string/ButtonPrivado"
         android:textSize="@dimen/_12sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:backgroundTint="@color/purple"

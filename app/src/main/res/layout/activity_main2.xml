@@ -94,6 +94,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="@string/main2Contactos"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
                     android:textColor="@color/purple"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>

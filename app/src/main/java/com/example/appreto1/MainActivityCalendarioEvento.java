@@ -1,14 +1,19 @@
 package com.example.appreto1;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.StyleRes;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
@@ -43,8 +48,16 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
         setContentView(R.layout.activity_main_calendario_evento);
         initWidgets();
 
+
+        //en proceso
         Bundle bundle = getIntent().getExtras();
         usuario = bundle.getString("usuario");
+
+        ArrayList <Evento> eventos = (ArrayList<Evento>) getIntent().getSerializableExtra("eventos");
+
+
+       //en proceso
+
 
         UTILS.selectedDate = LocalDate.now();
 
