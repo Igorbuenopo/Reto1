@@ -65,6 +65,27 @@
     <string name="preference_email_user" >
 
     </string>
+    //MainActivity
+
+    <string name="login" translatable="false">Login</string>
+    <string name="TextImputNombre"  translatable="false">Email</string>
+    <string name="editTextContrasenna" >Contraseña</string>
+    <string name="buttonConfirmar" >ACEPTAR</string>
+    <string name="preguntaRegistro" >¿No estás registrado?</string>
+    <string name="buttonRegistrarse" >REGISTRARSE</string>
+    <string name="ButtonPrivado" >Modo invitado</string>
+
+
+
+
+    //MainActivity2
+
+    <string name="bienvenidoTv" >¡Bienvenido!</string>
+    <string name="main2Calendario" >Calendario</string>
+    <string name="main2Contactos" >Contacto</string>
+    <string name="main2Calculadora" >Calculadora</string>
+    <string name="main2Notas" >Notas</string>
+    <string name="main2Cerrar" >Cerra sesión</string>
 
     //MainActivity
 

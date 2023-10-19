@@ -53,10 +53,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="@string/main2CalendarioText"
-                    android:textColor="@color/lavander"
+                    android:text="@string/main2Calendario"
+                    android:textColor="@color/purple"
                     android:textSize="18sp"
                     android:textStyle="bold" />
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -82,18 +83,18 @@
                 <ImageView
                     android:layout_width="80sp"
                     android:layout_height="80sp"
+
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/ic_transport" />
+                    android:src="@drawable/ic_contactos"/>
+
 
                 <TextView
                     android:id="@+id/main2ContactosText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="@string/main2ContactosText"
-                    android:textColor="@color/lavander"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:text="@string/main2Contactos"
+                    android:textColor="@color/purple"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -128,10 +129,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="@string/main2CalculadoraText"
-                    android:textColor="@color/lavander"
+                    android:text="@string/main2Calculadora"
+                    android:textColor="@color/purple"
                     android:textSize="18sp"
                     android:textStyle="bold" />
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -164,10 +166,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="@string/main2NotasText"
-                    android:textColor="@color/lavander"
+                    android:text="@string/main2Notas"
+                    android:textColor="@color/purple"
                     android:textSize="18sp"
                     android:textStyle="bold" />
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -200,10 +203,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="@string/main2CerrarText"
-                    android:textColor="@color/lavander"
+                    android:text="@string/main2Cerrar"
+                    android:textColor="@color/purple"
                     android:textSize="18sp"
                     android:textStyle="bold" />
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -238,9 +242,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="Cerrar sesión"
-                    android:textColor="@color/lavander"
+                    android:textColor="@color/purple"
                     android:textSize="18sp"
                     android:textStyle="bold" />
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
