@@ -9,11 +9,21 @@
     android:gravity="center_horizontal"
     tools:context=".MainActivity">
 
-    <View
+    <TextView
         android:id="@+id/topView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_120sdp"
-        android:background="@drawable/bg_view"/>
+        android:text="SMART EVENTS"
+        android:textStyle="bold"
+        android:textColor="@color/azulLogo"
+        android:textSize="@dimen/_23sdp"
+        android:gravity="center"
+        android:fontFamily="@font/font1"
+        android:drawableLeft="@drawable/logoinvisible"
+        android:paddingLeft="@dimen/_28sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_12sdp"
+        />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -37,11 +47,11 @@
                 android:id="@+id/login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="Iniciar sesión"
                 android:textAlignment="center"
                 android:textColor="@color/purple"
                 android:textSize="@dimen/_32sdp"
-                android:textStyle="bold"
-                android:text="@string/login"/>
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/TextImputNombre"
@@ -92,29 +102,32 @@
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginBottom="-14sp"
         android:padding="8sp"
-        android:textAlignment="center"
-        android:textSize="@dimen/_12sdp"
-        android:text="@string/preguntaRegistro"/>
+        android:text="@string/preguntaRegistro"
+        android:textAlignment="center" />
 
     <Button
+        android:layout_width="@dimen/_160sdp"
+        android:layout_height="@dimen/_44sdp"
         android:id="@+id/buttonRegistrarse"
-        android:layout_width="@dimen/_160sdp"
-        android:layout_height="@dimen/_44sdp"
-        android:layout_marginTop="@dimen/_18sdp"
-        android:backgroundTint="@color/purple"
+        android:text="REGISTRARSE"
         android:textSize="@dimen/_14sdp"
+        android:layout_marginTop="@dimen/_18sdp"
+        android:backgroundTint="@color/azulLogo"
         app:cornerRadius="20sp"
-        android:text="@string/buttonRegistrarse"/>
+        />
 
     <Button
-        android:id="@+id/ButtonPrivado"
         android:layout_width="@dimen/_160sdp"
         android:layout_height="@dimen/_44sdp"
-        android:layout_marginTop="@dimen/_18sdp"
-        android:backgroundTint="@color/purple"
-        android:drawableLeft="@drawable/ic_person"
+        android:id="@+id/ButtonPrivado"
+        android:text="MODO INVITADO"
         android:textSize="@dimen/_12sdp"
-        app:cornerRadius="20sp"
-        android:text="@string/ButtonPrivado"/>
+        android:layout_marginTop="@dimen/_10sdp"
+        android:backgroundTint="@color/purple"
+        android:drawableLeft="@drawable/ic_person"/>
+
+
+
+
 
 </LinearLayout>

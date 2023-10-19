@@ -41,7 +41,17 @@ public class CreateUserActivity extends AppCompatActivity {
         //inicializar textviews y botones
         EditText contrasenna = (EditText) findViewById(R.id.viewPass);
         Button confirmar = (Button) findViewById(R.id.buttonConfirmarCrear);
+        Button atras = (Button) findViewById(R.id.ButtonRegistroAtras);
         EditText usuario = (EditText) findViewById(R.id.viewUsuario);
+
+
+        atras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(CreateUserActivity.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
 
         //listener para el boton de crear usuario
         confirmar.setOnClickListener(new View.OnClickListener() {

@@ -80,10 +80,10 @@
     //MainActivity2
 
     <string name="bienvenidoTv" >WELCOME!</string>
-    <string name="main2CalendarioText" >Calendar</string>
-    <string name="main2ContactosText" >Contacts</string>
-    <string name="main2CalculadoraText" >Calculator</string>
-    <string name="main2NotasText" >Notes</string>
-    <string name="main2CerrarText" >Log out</string>
+    <string name="main2Calendario" >Calendar</string>
+    <string name="main2Contactos" >Contacts</string>
+    <string name="main2Calculadora" >Calculator</string>
+    <string name="main2Notas" >Notes</string>
+    <string name="main2Cerrar" >Log out</string>
 
 </resources>
