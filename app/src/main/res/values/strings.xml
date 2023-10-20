@@ -67,7 +67,7 @@
     </string>
     //MainActivity
 
-    <string name="login" translatable="false">Login</string>
+    <string name="login" >Inicar sesión</string>
     <string name="TextImputNombre"  translatable="false">Email</string>
     <string name="editTextContrasenna" >Contraseña</string>
     <string name="buttonConfirmar" >ACEPTAR</string>

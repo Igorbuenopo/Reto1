@@ -1,8 +1,9 @@
 package Entidades;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Evento {
+public class Evento implements Serializable {
 
     //Variables de uso
     private String titulo;

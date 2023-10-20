@@ -23,12 +23,14 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import Entidades.Evento;
 
 public class MainActivity2 extends AppCompatActivity {
-
+    ArrayList<Evento> eventos = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,47 +50,11 @@ public class MainActivity2 extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         //arraylist para guardar eventos de la base de datos
-        ArrayList <Evento> eventos = new ArrayList<Evento>();
+
 
 
       //listener que activa la recoleccion de datos de la base de datos
-        db.collection(usuario).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
 
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-
-                            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity2.this);
-
-
-                            builder.setTitle("Cargando");
-
-
-                            builder.setMessage("Sacando datos, porfavor esepere...");
-                            AlertDialog dialog = builder.create();
-                            dialog.show();
-
-                            //sacar "ids" de eventos de la base de datos
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                                //sacar de la carpeta del usuario sus eventos
-                                DocumentReference docRef = db.collection(usuario).document(document.getId());
-                                docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                        //pasar datos a la clase Evento
-                                        Evento evento = documentSnapshot.toObject(Evento.class);
-                                        //guardar Evento en arraylist
-                                        eventos.add(evento);
-                                    }
-                                });
-
-                            }
-                            dialog.cancel();
-                        }
-
-                    }
-                });
         //sacar documentos fin
 
 
@@ -96,10 +62,29 @@ public class MainActivity2 extends AppCompatActivity {
         calen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i= new Intent(MainActivity2.this,MainActivityCalendarioEvento.class);
-               i.putExtra("usuario",usuario);
-               i.putExtra("eventos",eventos);
-                startActivity(i);
+                db.collection(usuario).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                //pasar datos a la clase Evento
+                                Evento evento = document.toObject(Evento.class);
+                                //guardar Evento en arraylist
+                                eventos.add(evento);
+
+
+                            }
+                            Intent cambio = new Intent(MainActivity2.this, MainActivityCalendarioEvento.class);
+                            cambio.putExtra("usuario", usuario);
+                            cambio.putExtra("lista", (Serializable) eventos);
+                            startActivity(cambio);
+                        }
+
+                    }
+
+                });
             }
         });
 

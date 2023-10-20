@@ -1,7 +1,10 @@
 package com.example.appreto1;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.StyleRes;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,11 +12,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
@@ -37,6 +50,8 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
 
     String usuario;
 
+    ArrayList<Evento> listaEventos = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,12 +61,22 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
         Bundle bundle = getIntent().getExtras();
         usuario = bundle.getString("usuario");
 
+        listaEventos = (ArrayList<Evento>) bundle.getSerializable("lista");
+
+
+
+
+
+
+
         UTILS.selectedDate = LocalDate.now();
 
         setMonthView();
         siguiente = findViewById(R.id.mesSiguiente);
         anterior = findViewById(R.id.mesAnterior);
         atras = findViewById(R.id.atras);
+
+
 
        atras.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,7 +115,7 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
     private void setMonthView() {
         monthYearText.setText(monthYearFromDate(UTILS.selectedDate));
         ArrayList<LocalDate> daysInMonth = daysInMonthArray(UTILS.selectedDate);
-        CalendarAdapter calendarAdapter = new CalendarAdapter(daysInMonth, this);
+        CalendarAdapter calendarAdapter = new CalendarAdapter(daysInMonth, listaEventos, this);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
         calendarRecyclerView.setLayoutManager(layoutManager);
         calendarRecyclerView.setAdapter(calendarAdapter);
@@ -137,39 +162,5 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
             i.putExtra("usuario", usuario);
             startActivity(i);
         }
-    }
-
-
-    //No se usa, era de emergencia.
-    public int traducirMes(String texto){
-        String mes = texto.substring(0,3);
-        int valor = -1;
-        switch(mes){
-            case "Ene": valor = 1;
-                        break;
-            case "Feb": valor = 2;
-                        break;
-            case "Mar":valor = 3;
-                        break;
-            case "Abr":valor = 4;
-                        break;
-            case "May":valor = 5;
-                        break;
-            case "Jun":valor = 6;
-                        break;
-            case "Jul":valor = 7;
-                        break;
-            case "Ago":valor = 8;
-                        break;
-            case "Sep":valor = 9;
-                        break;
-            case "Oct": valor = 10;
-                        break;
-            case "Nov": valor = 11;
-                        break;
-            case "Dic": valor = 12;
-                        break;
-        }
-        return valor;
     }
 }

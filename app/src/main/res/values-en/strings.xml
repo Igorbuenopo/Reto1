@@ -70,7 +70,7 @@
 
     //MainActivity
 
-
+    <string name="login" >Login</string>
     <string name="editTextContrasenna" >Password</string>
     <string name="buttonConfirmar" >CONFIRM</string>
     <string name="preguntaRegistro" >Are you not registered yet?</string>
