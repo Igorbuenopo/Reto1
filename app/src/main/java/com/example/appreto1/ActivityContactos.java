@@ -1,7 +1,12 @@
 package com.example.appreto1;
 
+import static android.webkit.ConsoleMessage.MessageLevel.LOG;
+
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,7 +33,7 @@ public class ActivityContactos extends AppCompatActivity {
         setContentView(R.layout.activity_contactos);
         recyclerView = findViewById(R.id.recyclerViewContact);
         btnVolver = findViewById(R.id.btnVolverFlecha);
-        setupRecyclerView();
+
 
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,18 +42,17 @@ public class ActivityContactos extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
+        setupRecyclerView();
 
     }
 
-    private void setupRecyclerView() {
-
-        Query query = FirebaseFirestore.getInstance().collection("Contactos");/*.orderBy("nombre", Query.Direction.DESCENDING); */
-        FirestoreRecyclerOptions<Contacto> options = new FirestoreRecyclerOptions.Builder<Contacto>()
-                .setQuery(query,Contacto.class).build();
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        contactAdapter = new ContactAdapter(options,this);
-        recyclerView.setAdapter(contactAdapter);
+     void setupRecyclerView() {
+         Query query = FirebaseFirestore.getInstance().collection("Contactos");
+          FirestoreRecyclerOptions<Contacto> options = new FirestoreRecyclerOptions.Builder<Contacto>().setQuery(query,Contacto.class).build();
+           recyclerView.setLayoutManager(new LinearLayoutManager(this));
+          contactAdapter = new ContactAdapter(options,this);
+         recyclerView.setAdapter(contactAdapter);
+        Log.d(TAG, "tamaño del array: " +options.toString());
     }
 
     @Override
@@ -63,9 +67,12 @@ public class ActivityContactos extends AppCompatActivity {
         contactAdapter.stopListening();
     }
 
+/*
     @Override
     protected void onResume() {
         super.onResume();
         contactAdapter.notifyDataSetChanged();
     }
+*/
+
 }
