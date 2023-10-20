@@ -59,7 +59,6 @@ public class ActivityEvent extends AppCompatActivity {
         ano = bundle.getInt("año");
         mes = bundle.getInt("mes");
         dia = bundle.getInt("dia");
-
         usuario = bundle.getString("usuario");
         //get los extras para ir rellenando la fecha, la ponemos en un texto para que el usuario previsualice
         txtFecha = findViewById(R.id.txtFechaProv);

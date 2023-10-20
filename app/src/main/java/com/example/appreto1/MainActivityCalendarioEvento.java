@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -58,10 +59,13 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
         setContentView(R.layout.activity_main_calendario_evento);
         initWidgets();
 
+
+        //en proceso
         Bundle bundle = getIntent().getExtras();
         usuario = bundle.getString("usuario");
 
         listaEventos = (ArrayList<Evento>) bundle.getSerializable("lista");
+
 
 
 
