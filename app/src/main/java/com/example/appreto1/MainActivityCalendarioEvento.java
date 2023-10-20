@@ -40,19 +40,13 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
         setContentView(R.layout.activity_main_calendario_evento);
         initWidgets();
 
-
-        //en proceso
         Bundle bundle = getIntent().getExtras();
         usuario = bundle.getString("usuario");
 
         listaEventos = (ArrayList<Evento>) bundle.getSerializable("lista");
 
+
         Log.d("aaa", String.valueOf(listaEventos.size()));
-
-
-
-
-
 
         UTILS.selectedDate = LocalDate.now();
 

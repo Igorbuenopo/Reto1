@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/pur"
+    android:padding="16sp">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
@@ -25,10 +27,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewContact"
-        android:layout_width="411dp"
-        android:layout_height="672dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-
         tools:layout_editor_absoluteX="-1dp"
         tools:layout_editor_absoluteY="58dp"></androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>

@@ -2,23 +2,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:padding="12dp"
+    android:layout_marginVertical="8dp"
+    android:backgroundTint="@color/white"
+    android:background="@drawable/rounded_corner"
+    >
 
     <TextView
+        android:id="@+id/contacto_titulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Contacto_Nombre"
-        android:textSize="18sp"
-        android:id="@+id/contacto_titulo"
-        android:textColor="@color/color"
         android:layout_marginVertical="4dp"
-        />
+        android:layout_marginStart="4dp"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:text="Contacto_Nombre"
+        android:textColor="@color/color"
+        android:textSize="18sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="numero"
         android:textSize="17sp"
+        android:layout_marginStart="6dp"
         android:id="@+id/contacto_num"
         android:layout_marginVertical="4dp"
         android:maxLines="3"
@@ -29,6 +37,7 @@
         android:layout_height="wrap_content"
         android:text="texto"
         android:textSize="17sp"
+        android:layout_marginStart="6dp"
         android:id="@+id/contacto_texto"
         android:layout_marginVertical="4dp"
         android:maxLines="3"

@@ -124,7 +124,9 @@ public class ActivityEvent extends AppCompatActivity {
             }
         };
 
-        TimePickerDialog timePickerDialog = new TimePickerDialog(this,-1,onTimeSetListener, hora, minuto, true);
+
+        int Theme_Material_Dialog_Alert = 16974374;
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this,Theme_Material_Dialog_Alert,onTimeSetListener, hora, minuto, true);
         timePickerDialog.setTitle("Selecciona hora");
         timePickerDialog.show();
     }

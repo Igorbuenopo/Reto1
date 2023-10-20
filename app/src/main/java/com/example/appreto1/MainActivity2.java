@@ -95,6 +95,7 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity2.this, ActivityCalcNote.class);
+                i.putExtra("usuario",usuario);
                 startActivity(i);
             }
         });
@@ -103,6 +104,7 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity2.this, ActivityContactos.class);
+                i.putExtra("usuario",usuario);
                 startActivity(i);
             }
         });

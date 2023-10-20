@@ -34,11 +34,14 @@ public class ActivityContactos extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewContact);
         btnVolver = findViewById(R.id.btnVolverFlecha);
 
+        Bundle bundle = getIntent().getExtras();
+        String usuario = bundle.getString("usuario");
 
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ActivityContactos.this, MainActivity2.class);
+                i.putExtra("usuario",usuario);
                 startActivity(i);
             }
         });
