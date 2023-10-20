@@ -8,8 +8,4 @@ import Entidades.Evento;
 
 public class UTILS {
     public static LocalDate selectedDate;
-
-
-
-
 }

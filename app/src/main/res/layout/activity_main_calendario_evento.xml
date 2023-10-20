@@ -45,6 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="Oct 2023"
+            android:textStyle="bold"
             android:textSize="20sp"
             android:textAlignment="center"
             android:textColor="@color/purple" />
@@ -71,6 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="D"
+            android:textStyle="bold"
             android:textColor="@color/gray"
             android:textAlignment="center"
             android:textSize="16sp"/>
@@ -79,6 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="L"
+            android:textStyle="bold"
             android:textColor="@color/gray"
             android:textAlignment="center"
             android:textSize="16sp"/>
@@ -87,6 +90,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="M"
+            android:textStyle="bold"
             android:textColor="@color/gray"
             android:textAlignment="center"
             android:textSize="16sp"/>
@@ -95,6 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="X"
+            android:textStyle="bold"
             android:textColor="@color/gray"
             android:textAlignment="center"
             android:textSize="16sp"/>
@@ -103,6 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="J"
+            android:textStyle="bold"
             android:textColor="@color/gray"
             android:textAlignment="center"
             android:textSize="16sp"/>
@@ -111,6 +117,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="V"
+            android:textStyle="bold"
             android:textColor="@color/gray"
             android:textAlignment="center"
             android:textSize="16sp"/>
@@ -119,6 +126,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="S"
+            android:textStyle="bold"
             android:textColor="@color/gray"
             android:textAlignment="center"
             android:textSize="16sp"/>

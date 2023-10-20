@@ -1,43 +1,24 @@
 package com.example.appreto1;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.StyleRes;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 import Entidades.Evento;
-import Entidades.Fecha;
 
 public class MainActivityCalendarioEvento extends AppCompatActivity implements CalendarAdapter.OnItemListener{
 
@@ -51,7 +32,7 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
 
     String usuario;
 
-    ArrayList<Evento> listaEventos = new ArrayList<>();
+    ArrayList<Evento> listaEventos = new ArrayList<Evento>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +47,7 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
 
         listaEventos = (ArrayList<Evento>) bundle.getSerializable("lista");
 
-
+        Log.d("aaa", String.valueOf(listaEventos.size()));
 
 
 
@@ -119,7 +100,8 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
     private void setMonthView() {
         monthYearText.setText(monthYearFromDate(UTILS.selectedDate));
         ArrayList<LocalDate> daysInMonth = daysInMonthArray(UTILS.selectedDate);
-        CalendarAdapter calendarAdapter = new CalendarAdapter(daysInMonth, listaEventos, this);
+        ArrayList<Evento> eventoss = listaEventos;
+        CalendarAdapter calendarAdapter = new CalendarAdapter(daysInMonth, eventoss, this);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
         calendarRecyclerView.setLayoutManager(layoutManager);
         calendarRecyclerView.setAdapter(calendarAdapter);

@@ -6,7 +6,8 @@
         android:color="@color/purple" />
 
     <corners
-        android:radius="90sp"/>
+        android:bottomLeftRadius="@dimen/_45sdp"
+        android:bottomRightRadius="@dimen/_45sdp"/>
 
     <solid android:color="@color/purple"/>
 

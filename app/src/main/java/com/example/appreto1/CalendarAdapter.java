@@ -1,7 +1,6 @@
 package com.example.appreto1;
 
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,21 +11,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 import Entidades.Evento;
 
 public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
 
     private final ArrayList<LocalDate> daysOfMonth;
+    private ArrayList<Evento> listaEventos = new ArrayList<Evento>();
     private final OnItemListener onItemListener;
-    private ArrayList<Evento> eventos;
 
-    public CalendarAdapter(ArrayList<LocalDate> daysOfMonth, ArrayList<Evento> eventos, OnItemListener onItemListener) {
+    public CalendarAdapter(ArrayList<LocalDate> daysOfMonth, ArrayList<Evento> listaEventos, OnItemListener onItemListener) {
         this.daysOfMonth = daysOfMonth;
+        this.listaEventos = listaEventos;
         this.onItemListener = onItemListener;
-        this.eventos = eventos;
     }
 
     @NonNull
@@ -57,14 +54,19 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
                 holder.itemView.setBackgroundColor(Color.LTGRAY);
             }
 
+            for(int i = 0; i < listaEventos.size(); i++){
+                int anyo = listaEventos.get(i).getAno();
+                int mes = listaEventos.get(i).getMes();
+                int dia = listaEventos.get(i).getDia();
+                LocalDate e = LocalDate.of(anyo,mes,dia);
 
+                if(date.equals(e)){
+                    holder.itemView.setBackgroundColor(Color.rgb(53, 127, 149));
+                }
+            }
 
 
         }
-
-
-
-
     }
 
     @Override

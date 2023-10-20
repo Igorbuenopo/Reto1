@@ -45,6 +45,7 @@ public class MainActivity2 extends AppCompatActivity {
         CardView calc = findViewById(R.id.cardCalcu);
         CardView calen = findViewById(R.id.cardCalend);
         CardView contact = findViewById(R.id.cardContact);
+        CardView salir = findViewById(R.id.cardLogout);
 
         //firebase database initialise
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -85,10 +86,7 @@ public class MainActivity2 extends AppCompatActivity {
 
                 });
 
-                Intent i= new Intent(MainActivity2.this,MainActivityCalendarioEvento.class);
-               i.putExtra("usuario",usuario);
-               i.putExtra("eventos", eventos);
-                startActivity(i);
+
 
             }
         });
@@ -108,5 +106,15 @@ public class MainActivity2 extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        salir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity2.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
+
+
     }
 }
