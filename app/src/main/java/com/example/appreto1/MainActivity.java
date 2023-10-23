@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-         //entrar como privado
+         //entrar como anonimo
         privado.setOnClickListener(new View.OnClickListener() {
 
             @Override
