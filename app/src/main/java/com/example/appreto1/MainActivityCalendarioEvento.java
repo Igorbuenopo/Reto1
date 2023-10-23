@@ -55,36 +55,23 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
         setContentView(R.layout.activity_main_calendario_evento);
         initWidgets();
 
-
         Bundle bundle = getIntent().getExtras();
         usuario = bundle.getString("usuario");
-
-
-
-
 
 
         if(monthYearText.getText().toString() == "Back"){
             textoMes = false;
         }
 
+        Log.d("aaa", String.valueOf(listaEventos.size()));
 
         UTILS.selectedDate = LocalDate.now();
-
-
-
 
         siguiente = findViewById(R.id.mesSiguiente);
         anterior = findViewById(R.id.mesAnterior);
         atras = findViewById(R.id.atras);
 
-
-
-
         conseguirArrayEventos(usuario);
-
-
-
 
         atras.setOnClickListener(new View.OnClickListener() {
             @Override

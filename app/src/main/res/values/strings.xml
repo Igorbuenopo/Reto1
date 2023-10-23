@@ -1,23 +1,22 @@
 <resources>
     <string name="app_name">AppReto1</string>
-    <string name="profile">Profile</string>
-    <string name="notifications">Notifications</string>
-    <string name="collection">Collection</string>
+    <string name="profile">Perfil</string>
+    <string name="notifications">Notificaciones</string>
+    <string name="collection">Coleccion</string>
     <string name="inbox">Inbox</string>
     <string name="orders">Orders</string>
-    <string name="settings">Settings</string>
-    <string name="support">Support</string>
-    <string name="aboutus">AboutUs</string>
-    <string name="igor_bueno">Igor Bueno</string>
+    <string name="settings">Ajustes</string>
+    <string name="support">Soporte</string>
+    <string name="aboutus">Sobre nosotros</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="profilef">Profile</string>
+    <string name="profilef">Perfil</string>
     <string name="title_activity_navigation">ActivityNavigation</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="next">Siguiente</string>
+    <string name="previous">Anterior</string>
 
     <string name="title_activity_main_nav">MainActivityNav</string>
     <string name="title_activity_main_activity2_menu">MainActivity2Menu</string>
@@ -31,26 +30,29 @@
     </string>
     //MainActivity
     <string name="atrasbotonCalen">Atrás</string>
+    
 
-    <string name="login">Inicar sesión</string>
+    <string name="login" >Inicar sesión</string>
 
-
-    <string name="TextImputNombre" translatable="false">Email</string>
-    <string name="editTextContrasenna">Contraseña</string>
-    <string name="buttonConfirmar">ACEPTAR</string>
-    <string name="preguntaRegistro">¿No estás registrado?</string>
-    <string name="buttonRegistrarse">REGISTRARSE</string>
-    <string name="ButtonPrivado">Modo invitado</string>
-
+    <string name="TextImputNombre"  translatable="false">Email</string>
+    <string name="editTextContrasenna" >Contraseña</string>
+    <string name="buttonConfirmar" >ACEPTAR</string>
+    <string name="preguntaRegistro" >¿No estás registrado?</string>
+    <string name="buttonRegistrarse" >REGISTRARSE</string>
+    <string name="ButtonPrivado" >Modo invitado</string>
 
     //MainActivity2
 
-    <string name="bienvenidoTv">¡Bienvenido!</string>
-    <string name="main2Calendario">Calendario</string>
-    <string name="main2Contactos">Contacto</string>
-    <string name="main2Calculadora">Calculadora</string>
-    <string name="main2Notas">Notas</string>
-    <string name="main2Cerrar">Cerra sesión</string>
+    <string name="bienvenidoTv" >¡Bienvenido!</string>
+    <string name="main2Calendario" >Calendario</string>
+    <string name="main2Contactos" >Contacto</string>
+    <string name="main2Calculadora" >Calculadora</string>
+    <string name="main2Notas" >Notas</string>
+    <string name="main2Cerrar" >Cerrar sesión</string>
+
+
+
+
 
 
 </resources>

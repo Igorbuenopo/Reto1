@@ -11,12 +11,15 @@ import org.mozilla.javascript.Scriptable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ActivityCalcNote extends AppCompatActivity implements View.OnClickListener{
 
     TextView oper, resul;
     MaterialButton bC, bOB, bCB, b0, b1, b2, b3, b4, b5, b6, b7, b8, b9;
     MaterialButton butSum, butRes, butMul, butDiv, butIgual;
+
+    FloatingActionButton btnVolver;
 
     MaterialButton bAc, bPunto, bSalir;
 
@@ -25,7 +28,20 @@ public class ActivityCalcNote extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calcnote);
 
+        Bundle bundle = getIntent().getExtras();
+        String usuario = bundle.getString("usuario");
 
+        btnVolver = findViewById(R.id.btnVolverFlecha);
+
+
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ActivityCalcNote.this, MainActivity2.class);
+                i.putExtra("usuario",usuario);
+                startActivity(i);
+            }
+        });
 
         resul = findViewById(R.id.idTvResul);
         oper = findViewById(R.id.idTvOper);
