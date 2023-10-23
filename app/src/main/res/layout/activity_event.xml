@@ -25,7 +25,7 @@
 
     <EditText
         android:id="@+id/txtDescripcion"
-        app
+
         android:layout_width="276dp"
         android:layout_height="173dp"
         android:layout_marginTop="@dimen/_26sdp"
@@ -127,7 +127,7 @@
         android:layout_marginTop="29dp"
         android:layout_marginEnd="17dp"
         android:layout_marginBottom="23dp"
-        android:tint="#6750A3"
+        app:tint="#6750A3"
         app:layout_constraintBottom_toTopOf="@+id/imageView3"
         app:layout_constraintEnd_toStartOf="@+id/txtTitulo"
         app:layout_constraintStart_toStartOf="parent"
@@ -141,7 +141,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="23dp"
         android:layout_marginEnd="30dp"
-        android:tint="#6750A3"
+        app:tint="#6750A3"
         app:layout_constraintEnd_toStartOf="@+id/btnHora"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
@@ -154,7 +154,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="19dp"
-        android:tint="#6750A3"
+        app:tint="#6750A3"
         app:layout_constraintEnd_toStartOf="@+id/txtLugar"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -169,7 +169,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="23dp"
         android:layout_marginBottom="236dp"
-        android:tint="#6750A3"
+        app:tint="#6750A3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/txtDescripcion"
         app:layout_constraintHorizontal_bias="0.0"
