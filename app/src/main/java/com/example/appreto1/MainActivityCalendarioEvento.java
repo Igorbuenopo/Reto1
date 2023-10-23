@@ -1,6 +1,8 @@
 package com.example.appreto1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,6 +14,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
@@ -22,17 +31,23 @@ import Entidades.Evento;
 
 public class MainActivityCalendarioEvento extends AppCompatActivity implements CalendarAdapter.OnItemListener{
 
+
     Button siguiente;
     Button anterior;
 
-    Button atras;
+
+    static AppCompatButton atras;
+
 
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
 
-    String usuario;
 
-    ArrayList<Evento> listaEventos = new ArrayList<Evento>();
+    String usuario;
+    boolean textoMes = true;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    ArrayList<Evento> listaEventos = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,36 +56,45 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
         initWidgets();
 
 
-        //en proceso
         Bundle bundle = getIntent().getExtras();
         usuario = bundle.getString("usuario");
 
-        listaEventos = (ArrayList<Evento>) bundle.getSerializable("lista");
-
-        Log.d("aaa", String.valueOf(listaEventos.size()));
 
 
 
 
+
+        if(monthYearText.getText().toString() == "Back"){
+            textoMes = false;
+        }
 
 
         UTILS.selectedDate = LocalDate.now();
 
-        setMonthView();
+
+
+
         siguiente = findViewById(R.id.mesSiguiente);
         anterior = findViewById(R.id.mesAnterior);
         atras = findViewById(R.id.atras);
 
 
 
-       atras.setOnClickListener(new View.OnClickListener() {
+
+        conseguirArrayEventos(usuario);
+
+
+
+
+        atras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivityCalendarioEvento.this, MainActivity2.class);
                 i.putExtra("usuario",usuario);
                 startActivity(i);
             }
-       });
+        });
+
 
         siguiente.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +103,7 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
                 setMonthView();
             }
         });
+
 
         anterior.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,12 +115,34 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
     }
 
 
+    public void conseguirArrayEventos(String user) {
+        db.collection(user).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        //pasar datos a la clase Evento
+                        Evento evento = document.toObject(Evento.class);
+                        //guardar Evento en arraylist
+                        listaEventos.add(evento);
+                    }
+                }
+                setMonthView();
+            }
+
+        });
+    }
+
+
+
 
     private void initWidgets() {
         calendarRecyclerView = findViewById(R.id.calendarRecyclerView);
-        monthYearText = findViewById(R.id.añoMesTv);
+        monthYearText = findViewById(R.id.anyoMesTv);
+
 
     }
+
 
     private void setMonthView() {
         monthYearText.setText(monthYearFromDate(UTILS.selectedDate));
@@ -106,7 +153,9 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
         calendarRecyclerView.setLayoutManager(layoutManager);
         calendarRecyclerView.setAdapter(calendarAdapter);
 
+
     }
+
 
     private ArrayList<LocalDate> daysInMonthArray(LocalDate date) {
         ArrayList<LocalDate> daysInMonthArray = new ArrayList<>();
@@ -114,6 +163,7 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
         int daysInMonth = yearMonth.lengthOfMonth();
         LocalDate firstOfMonth = UTILS.selectedDate.withDayOfMonth(1);
         int dayOfWeek = firstOfMonth.getDayOfWeek().getValue();
+
 
         for(int i = 1; i<= 42; i++){
             if(i <= dayOfWeek || i > daysInMonth + dayOfWeek){
@@ -123,7 +173,9 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
             }
         }
 
+
         return daysInMonthArray;
+
 
     }
     private static String mayusMonth(String myDate){
@@ -131,21 +183,30 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
         return monthMayus;
     }
 
+
     private String monthYearFromDate(LocalDate date){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy", new Locale("es", "ES"));
+        String pais = "ES";
+        String idioma = "es";
+        if(textoMes){
+            pais = "US";
+            idioma = "en";
+        }
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy", new Locale(idioma, pais));
         return mayusMonth(date.format(formatter));
     }
+
 
     @Override
     public void onItemClick(int position, String dayText) {
         if(!dayText.equals("")){
             String message = "Selected Date "+dayText+" "+monthYearFromDate(UTILS.selectedDate);
             Toast.makeText(this,message, Toast.LENGTH_LONG).show();
-            Intent i = new Intent(MainActivityCalendarioEvento.this, ActivityEvent.class);
+            Intent i = new Intent(MainActivityCalendarioEvento.this, ActivityListaEventos.class);
             i.putExtra("dia",Integer.valueOf(dayText));
             i.putExtra("mes",UTILS.selectedDate.getMonth().getValue());
             i.putExtra("año", UTILS.selectedDate.getYear());
             i.putExtra("usuario", usuario);
+            i.putExtra("lista", (Serializable) listaEventos);
             startActivity(i);
         }
     }

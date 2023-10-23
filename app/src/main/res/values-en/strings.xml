@@ -69,7 +69,7 @@
     </string>
 
     //MainActivity
-
+    <string name="atrasbotonCalen">Back</string>
     <string name="login" >Login</string>
     <string name="editTextContrasenna" >Password</string>
     <string name="buttonConfirmar" >CONFIRM</string>

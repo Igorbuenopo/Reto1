@@ -72,6 +72,24 @@ public class MainActivity extends AppCompatActivity {
 
                  String email = txtUsuario.getText().toString();
                  String password = contrasenna.getText().toString();
+                 if(email.isEmpty() || password.isEmpty()){
+                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+
+                     builder.setTitle("Login");
+
+                     builder.setPositiveButton("Aceptar", (DialogInterface.OnClickListener) (dialog, which) -> {
+                         // boton de aceptar y cerrar pop-up
+
+                         dialog.cancel();
+                     });
+
+                     builder.setMessage("Usuario o contraseña vacios");
+                     AlertDialog dialog = builder.create();
+                     dialog.show();
+
+                     return;
+                 }
 
                  mAuth.signInWithEmailAndPassword(email, password)
                          .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {

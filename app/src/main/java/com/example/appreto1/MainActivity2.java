@@ -46,6 +46,7 @@ public class MainActivity2 extends AppCompatActivity {
         CardView calen = findViewById(R.id.cardCalend);
         CardView contact = findViewById(R.id.cardContact);
         CardView salir = findViewById(R.id.cardLogout);
+        CardView nota = findViewById(R.id.cardNota);
 
         //firebase database initialise
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -57,7 +58,14 @@ public class MainActivity2 extends AppCompatActivity {
       //listener que activa la recoleccion de datos de la base de datos
 
 
-
+        nota.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent cambio = new Intent(MainActivity2.this, ActivityNotas.class);
+                cambio.putExtra("usuario", usuario);
+                startActivity(cambio);
+            }
+        });
 
         calen.setOnClickListener(new View.OnClickListener() {
             @Override

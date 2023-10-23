@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pur"
+    android:padding="16sp"
+    tools:context=".MainActivity2">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layoutText">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvanyadirnota"
+            android:text="Añadir nota"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnatrasnota"
+            android:src="@drawable/ic_back"
+            android:backgroundTint="#7777B8"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layoutText"
+        android:orientation="vertical"
+        android:padding="16sp"
+        android:layout_marginVertical="26sp"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/rounded_corner"
+        android:id="@+id/layoutnota">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edTituloNota"
+            android:hint="Título"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:maxLength="25"
+            android:layout_marginVertical="8sp"
+            android:padding="12sp"
+            android:textColor="@color/color"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edContenidoNota"
+            android:hint="Contenido"
+            android:gravity="top"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginVertical="8sp"
+            android:padding="12sp"
+            android:textColor="@color/color"
+            android:minLines="14"
+            android:maxLines="14"
+            android:maxLength="420"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layoutnota"
+        android:orientation="vertical"
+        android:gravity="center">
+        <Button
+            android:id="@+id/btnguardarnota"
+            android:layout_width="200sp"
+            android:layout_height="58sp"
+            android:text="GUARDAR"
+            android:textSize="16sp"
+            android:backgroundTint="#7777B8"
+            android:textStyle="bold"/>
+
+        <Button
+            android:layout_width="200sp"
+            android:layout_height="58sp"
+            android:id="@+id/btneliminarNota"
+            android:text="ELIMINAR"
+            android:layout_marginTop="12sp"
+            android:textSize="16sp"
+            android:backgroundTint="#7777B8"
+            android:textStyle="bold"
+            android:visibility="invisible"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
