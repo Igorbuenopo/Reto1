@@ -1,190 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityEvent">
+    android:background="@color/pur"
+    android:padding="16sp"
+    tools:context=".MainActivity">
 
-    <!-- Boton para abrir fragment con un calendario y reloj para elegir fecha y hora -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_crearEvento">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvnotas"
+            android:text="Crear Evento"
+            android:textSize="32sp"
+            android:textStyle="bold" />
 
-    <!-- Para escribir la fecha seleccionada no editable (tiene un hint) -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnnotasatras"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_back"
+            android:backgroundTint="#7777B8" />
+    </RelativeLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_below="@id/layout_crearEvento">
 
-    <TextView
-        android:id="@+id/TituloCrearEvento"
-        android:layout_width="281dp"
-        android:layout_height="49dp"
-        android:shape="ring"
-        android:text="CREAR EVENTO"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
-
-    <EditText
-        android:id="@+id/txtDescripcion"
-
-        android:layout_width="276dp"
-        android:layout_height="173dp"
-        android:layout_marginTop="@dimen/_26sdp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/custom_edittext"
-        android:drawablePadding="8sp"
-        android:ems="10"
-        android:hint="Descripción"
-        android:inputType="text"
-        android:minLines="20"
+    <LinearLayout
+        android:gravity="center"
         android:padding="8sp"
-        android:textColor="@color/color"
-        android:textColorHighlight="@color/cardview_dark_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.753" />
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/btnHora"
-        android:layout_width="256dp"
-        android:layout_height="59dp"
-        android:layout_marginEnd="40dp"
-        android:shape="ring"
-        android:text="Seleccione Hora"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.383" />
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/imageView1"
+            android:layout_width="50dp"
+            android:layout_height="55dp"
+            app:srcCompat="@drawable/baseline_title_24"
+            app:tint="@color/azulLogo" />
 
-    <EditText
-        android:id="@+id/txtLugar"
-        android:layout_width="285dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="@dimen/_26sdp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/custom_edittext"
-        android:drawablePadding="8sp"
-        android:ems="10"
-        android:hint="Localización"
-        android:inputType="text"
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:textSize="@dimen/_20sdp"
+            android:hint="Titulo..."
+            android:background="@drawable/custom_edittext"
+            android:backgroundTint="@color/white"
+            ></EditText>
+
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center"
         android:padding="8sp"
-        android:textColor="@color/color"
-        android:textColorHighlight="@color/cardview_dark_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.473" />
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/txtTitulo"
-        android:layout_width="285dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="@dimen/_26sdp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/custom_edittext"
-        android:drawablePadding="8sp"
-        android:ems="10"
-        android:hint="Nombre de evento"
-        android:inputType="text"
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/imageView2"
+            android:layout_width="50dp"
+            android:layout_height="55dp"
+            app:tint="@color/azulLogo"
+            app:srcCompat="@drawable/baseline_place_24" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:textSize="@dimen/_20sdp"
+            android:hint="Lugar..."
+            android:background="@drawable/custom_edittext"
+            android:backgroundTint="@color/white"
+            ></EditText>
+
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center"
         android:padding="8sp"
-        android:textColor="@color/color"
-        android:textColorHighlight="@color/cardview_dark_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.222" />
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/txtFechaProv"
-        android:layout_width="254dp"
-        android:layout_height="67dp"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.12" />
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/imageView3"
+            android:layout_width="50dp"
+            android:layout_height="55dp"
+            app:srcCompat="@drawable/baseline_edit_24"
+            app:tint="@color/azulLogo" />
 
-    <Button
-        android:id="@+id/btnCrear"
-        android:layout_width="173dp"
-        android:layout_height="88dp"
-        android:text="Crear Evento"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.953" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:textSize="@dimen/_20sdp"
+            android:background="@drawable/custom_edittext"
+            android:backgroundTint="@color/white"
+            android:minLines="6"
+            ></EditText>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="55dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginBottom="23dp"
-        app:tint="#6750A3"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
-        app:layout_constraintEnd_toStartOf="@+id/txtTitulo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtFechaProv"
-        app:srcCompat="@drawable/baseline_edit_24" />
+    </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="57dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="30dp"
-        app:tint="#6750A3"
-        app:layout_constraintEnd_toStartOf="@+id/btnHora"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:srcCompat="@drawable/baseline_access_time_24" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8sp"
+        android:gravity="center">
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/imagenCl"
+            android:layout_width="50dp"
+            android:layout_height="55dp"
+            app:srcCompat="@drawable/baseline_calendar_month_24"
+            app:tint="@color/azulLogo" />
+        <TextView
+            android:id="@+id/txtFechaProv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_30sdp"
+            android:gravity="top"
+            android:text=""
+    />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="53dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="19dp"
-        app:tint="#6750A3"
-        app:layout_constraintEnd_toStartOf="@+id/txtLugar"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:srcCompat="@drawable/baseline_place_24" />
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center"
+        android:padding="8sp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/imagenHora"
+            android:layout_width="50dp"
+            android:layout_height="55dp"
+            app:srcCompat="@drawable/baseline_access_time_24"
+            app:tint="@color/azulLogo" />
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="50dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="23dp"
-        android:layout_marginBottom="236dp"
-        app:tint="#6750A3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/txtDescripcion"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.694"
-        app:srcCompat="@drawable/baseline_sticky_note_2_24" />
+        <TextView
+            android:id="@+id/horaProvisional"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_30sdp"
+            android:gravity="top"
+            android:text=""></TextView>
+</LinearLayout>
+    <LinearLayout
+        android:gravity="center"
+        android:padding="8sp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnCrear"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/baseline_access_time_24"
+            android:backgroundTint="#7777B8" />
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="429dp"
-        android:layout_height="124dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bg_view" />
+    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
+    </RelativeLayout>
