@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -39,6 +40,8 @@ public class ActivityEvent extends AppCompatActivity {
     String titulo, descripcion, lugar;
     int ano, mes, dia;
 
+    ArrayList<Evento> listaEventos = new ArrayList<Evento>();
+
     //Variables para el TimePicker
     String textoHora;
     Button botonHora;
@@ -53,13 +56,13 @@ public class ActivityEvent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
 
-
         //obtenemos el bundle que nos interesa
         Bundle bundle = getIntent().getExtras();
         ano = bundle.getInt("año");
         mes = bundle.getInt("mes");
         dia = bundle.getInt("dia");
         usuario = bundle.getString("usuario");
+        listaEventos = (ArrayList<Evento>) bundle.getSerializable("lista");
         //get los extras para ir rellenando la fecha, la ponemos en un texto para que el usuario previsualice
         txtFecha = findViewById(R.id.txtFechaProv);
         txtFecha.setText(dia+"-"+mes+"-"+ano);
@@ -90,11 +93,9 @@ public class ActivityEvent extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
                 titulo = textTitulo.getText().toString();
                 descripcion = textDescripcion.getText().toString();
                 lugar = textLugar.getText().toString();
-
 
                 Evento evento = new Evento(titulo,descripcion,hora,minuto,dia,mes,ano,lugar);
 
@@ -102,10 +103,14 @@ public class ActivityEvent extends AppCompatActivity {
 
                // db.collection(usuario).document("Evento [i]").set(evento);
                 db.collection(usuario).document("Evento "+1).set(evento);
-             //   db.collection(usuario).add(evento);
+                //   db.collection(usuario).add(evento);
 
-                Intent i = new Intent(ActivityEvent.this, MainActivityCalendarioEvento.class);
+                Intent i = new Intent(ActivityEvent.this, ActivityListaEventos.class);
                 i.putExtra("usuario",usuario);
+                i.putExtra("lista",listaEventos);
+                i.putExtra("año", ano);
+                i.putExtra("mes", mes);
+                i.putExtra("dia", dia);
                 startActivity(i);
             }
         });
@@ -142,6 +147,7 @@ public class ActivityEvent extends AppCompatActivity {
         event.setAno(ano);
         event.setHora(hora);
         event.setMinuto(minuto);
+        listaEventos.add(event);
     }
 
     //metodo para coger la hora del sistema

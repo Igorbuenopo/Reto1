@@ -51,6 +51,7 @@
             app:tint="@color/azulLogo" />
 
         <EditText
+            android:id="@+id/txtTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
@@ -77,6 +78,7 @@
             app:srcCompat="@drawable/baseline_place_24" />
 
         <EditText
+            android:id="@+id/txtLugar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
@@ -103,6 +105,7 @@
             app:tint="@color/azulLogo" />
 
         <EditText
+            android:id="@+id/txtDescripcion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
@@ -151,13 +154,14 @@
             app:srcCompat="@drawable/baseline_access_time_24"
             app:tint="@color/azulLogo" />
 
-        <TextView
-            android:id="@+id/horaProvisional"
+        <Button
+            android:id="@+id/btnHora"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/_30sdp"
             android:gravity="top"
-            android:text=""></TextView>
+            android:text=""
+            android:backgroundTint="@color/azulLogo"></Button>
 </LinearLayout>
     <LinearLayout
         android:gravity="center"
@@ -165,14 +169,16 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+
+        <Button
             android:id="@+id/btnCrear"
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/baseline_access_time_24"
-            android:backgroundTint="#7777B8" />
+            android:backgroundTint="#7777B8"
+            android:text="Crear Evento"
+           />
 
     </LinearLayout>
 

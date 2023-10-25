@@ -34,7 +34,6 @@ public class ActivityListaEventos extends AppCompatActivity implements EventAdap
 
     TextView tvEventoFech;
 
-
     FloatingActionButton atras, anyadir;
     ArrayList<Evento> listaEventos = new ArrayList<Evento>();
     ArrayList<Evento> listaEventosDia = new ArrayList<Evento>();
