@@ -16,38 +16,32 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class ActivityCalcNote extends AppCompatActivity implements View.OnClickListener{
 
     TextView oper, resul;
-    MaterialButton bC, bOB, bCB, b0, b1, b2, b3, b4, b5, b6, b7, b8, b9;
+    MaterialButton bC, bNot, bAtras, b0, b1, b2, b3, b4, b5, b6, b7, b8, b9;
     MaterialButton butSum, butRes, butMul, butDiv, butIgual;
 
     FloatingActionButton btnVolver;
 
-    MaterialButton bAc, bPunto, bSalir;
+    MaterialButton bAc, bPunto;
+    String usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calcnote);
 
+        //recogemos el usuario, para que cuando volvamos a otro activity no de error
         Bundle bundle = getIntent().getExtras();
-        String usuario = bundle.getString("usuario");
-
-        btnVolver = findViewById(R.id.btnVolverFlecha);
+         usuario = bundle.getString("usuario");
 
 
-        btnVolver.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(ActivityCalcNote.this, MainActivity2.class);
-                i.putExtra("usuario",usuario);
-                startActivity(i);
-            }
-        });
 
+
+         //ASIGANAMOS ID
         resul = findViewById(R.id.idTvResul);
         oper = findViewById(R.id.idTvOper);
 
-        asignarId(bOB, R.id.idButOpenBracket);
-        asignarId(bCB, R.id.idButCloseBracket);
+        asignarId(bNot, R.id.idButNotas);
+        asignarId(bAtras, R.id.idButAtras);
 
         asignarId(bC, R.id.idButC);
         asignarId(b0, R.id.idBut0);
@@ -72,6 +66,7 @@ public class ActivityCalcNote extends AppCompatActivity implements View.OnClickL
 
     }
 
+    //función para asignar ids
     void asignarId (MaterialButton but, int id){
         but = findViewById(id);
         but.setOnClickListener(this);
@@ -83,10 +78,22 @@ public class ActivityCalcNote extends AppCompatActivity implements View.OnClickL
         String botonTexto = but.getText().toString();
         String calcular = oper.getText().toString();
 
-        if(botonTexto.equals("X")){
-            Intent i = new Intent(ActivityCalcNote.this, MainActivity2.class);
+        //nos lleva a notas
+        if(botonTexto.equals("notas")){
+            Intent i = new Intent(ActivityCalcNote.this, ActivityNotas.class);
+            i.putExtra("usuario", usuario);
             startActivity(i);
-        }else {
+            return;
+        }
+
+        //nos lleva para atras, es decir, al menu de navegacion
+        if(botonTexto.equals("atras")) {
+            Intent i = new Intent(ActivityCalcNote.this, MainActivity2.class);
+            i.putExtra("usuario", usuario);
+            startActivity(i);
+            return;
+        }
+
             if (botonTexto.equals("AC")) {
                 oper.setText("");
                 resul.setText("0");
@@ -111,9 +118,10 @@ public class ActivityCalcNote extends AppCompatActivity implements View.OnClickL
             if (!resultadoFinal.equals("Error")) {
                 resul.setText(resultadoFinal);
             }
-        }
+
     }
 
+    //funcion que usa javascript, para calcular
     String getResult (String data){
         try{
             Context con = Context.enter();

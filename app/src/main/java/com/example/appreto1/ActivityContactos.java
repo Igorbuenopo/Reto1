@@ -34,9 +34,11 @@ public class ActivityContactos extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewContact);
         btnVolver = findViewById(R.id.btnVolverFlecha);
 
+        //recogemos el usuario
         Bundle bundle = getIntent().getExtras();
         String usuario = bundle.getString("usuario");
 
+        //boton de volver atras
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,19 +47,20 @@ public class ActivityContactos extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        //seteamos el recyclerview, para que aparezca la lista de contactos
         setupRecyclerView();
 
     }
 
+    //funcion con la que crea el recycler
      void setupRecyclerView() {
          Query query = FirebaseFirestore.getInstance().collection("Contactos");
           FirestoreRecyclerOptions<Contacto> options = new FirestoreRecyclerOptions.Builder<Contacto>().setQuery(query,Contacto.class).build();
            recyclerView.setLayoutManager(new LinearLayoutManager(this));
           contactAdapter = new ContactAdapter(options,this);
          recyclerView.setAdapter(contactAdapter);
-        Log.d(TAG, "tamaño del array: " +options.toString());
-    }
 
+    }
     @Override
     protected void onStart() {
         super.onStart();

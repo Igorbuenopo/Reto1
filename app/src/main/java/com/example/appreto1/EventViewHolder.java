@@ -12,6 +12,7 @@ public class EventViewHolder extends RecyclerView.ViewHolder implements View.OnL
     public TextView tituloTextView;
     public TextView lugarTextView;
     public TextView horaTextView;
+    public TextView descTextView;
     private final EventAdapter.OnLongItemListener onLongItemListener;
 
 
@@ -22,6 +23,7 @@ public class EventViewHolder extends RecyclerView.ViewHolder implements View.OnL
         tituloTextView = itemView.findViewById(R.id.tveventtitulo);
         lugarTextView = itemView.findViewById(R.id.tveventlugar);
         horaTextView = itemView.findViewById(R.id.tveventhora);
+        descTextView = itemView.findViewById(R.id.tvdesclugar);
         this.onLongItemListener = onLongItemListener;
         itemView.setOnLongClickListener(this);
     }

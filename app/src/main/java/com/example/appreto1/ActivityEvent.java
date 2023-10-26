@@ -2,8 +2,8 @@ package com.example.appreto1;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
-import android.app.AlertDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,10 +13,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -35,6 +41,7 @@ public class ActivityEvent extends AppCompatActivity {
     EditText textLugar;
     Button btnCrear;
     TextView txtFecha;
+    FloatingActionButton atras;
 
     //Strings para almacenarlos en el elemento Evento
     String titulo, descripcion, lugar;
@@ -50,11 +57,13 @@ public class ActivityEvent extends AppCompatActivity {
    // Fecha fecha = new Fecha();
 
     String usuario;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
+
 
         //obtenemos el bundle que nos interesa
         Bundle bundle = getIntent().getExtras();
@@ -66,6 +75,20 @@ public class ActivityEvent extends AppCompatActivity {
         //get los extras para ir rellenando la fecha, la ponemos en un texto para que el usuario previsualice
         txtFecha = findViewById(R.id.txtFechaProv);
         txtFecha.setText(dia+"-"+mes+"-"+ano);
+        atras = findViewById(R.id.bteventcreateatras);
+
+        atras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ActivityEvent.this, ActivityListaEventos.class);
+                i.putExtra("dia", dia);
+                i.putExtra("mes", mes);
+                i.putExtra("año", ano);
+                i.putExtra("usuario", usuario);
+                i.putExtra("lista", (Serializable) listaEventos);
+                startActivity(i);
+            }
+        });
 
 
 
@@ -89,6 +112,7 @@ public class ActivityEvent extends AppCompatActivity {
 
 
         btnCrear = findViewById(R.id.btnCrear);
+        //boton crear evento
         btnCrear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,21 +121,22 @@ public class ActivityEvent extends AppCompatActivity {
                 descripcion = textDescripcion.getText().toString();
                 lugar = textLugar.getText().toString();
 
+                //comprueba que este el titulo
+                if(titulo.isEmpty()){
+                    textTitulo.setError("Titulo obligatorio");
+                    return;
+                }
+
+                //comprueba que el no se repita el nombre del titulo
+                for(int i = 0; i<listaEventos.size(); i++){
+                    if(listaEventos.get(i).getTitulo().equals(titulo)){
+                        textTitulo.setError("Titulo repetido");
+                        return;
+                    }
+                }
+
                 Evento evento = new Evento(titulo,descripcion,hora,minuto,dia,mes,ano,lugar);
-
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-               // db.collection(usuario).document("Evento [i]").set(evento);
-                db.collection(usuario).document("Evento "+1).set(evento);
-                //   db.collection(usuario).add(evento);
-
-                Intent i = new Intent(ActivityEvent.this, ActivityListaEventos.class);
-                i.putExtra("usuario",usuario);
-                i.putExtra("lista",listaEventos);
-                i.putExtra("año", ano);
-                i.putExtra("mes", mes);
-                i.putExtra("dia", dia);
-                startActivity(i);
+                crearEvento(evento);
             }
         });
 
@@ -127,6 +152,7 @@ public class ActivityEvent extends AppCompatActivity {
                 botonHora.setText(String.format(Locale.getDefault(),"%02d:%02d",hora,minuto));
                 textoHora = String.format(Locale.getDefault(),"%02d:%02d",hora,minuto);
             }
+
         };
 
 
@@ -137,17 +163,36 @@ public class ActivityEvent extends AppCompatActivity {
     }
 
     //Funcion para recoger los datos de los textviews y crear un elemento de tipo Evento
-    public void crearEvento(String textoTitulo, String textoDescripcion,String textoLugar, int hora, int minuto ){
-        Evento event = new Evento();
-        event.setTitulo(textoTitulo);
-        event.setDescripcion(textoDescripcion);
-        event.setLugar(textoLugar);
-        event.setDia(dia);
-        event.setMes(mes);
-        event.setAno(ano);
-        event.setHora(hora);
-        event.setMinuto(minuto);
-        listaEventos.add(event);
+    public void crearEvento(Evento e){
+        //no deja crear en modo invitado
+        if(usuario.equals("Invitado")){
+            AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(ActivityEvent.this);
+
+
+            builder.setTitle("Error Invitado");
+
+            builder.setPositiveButton("Aceptar", (DialogInterface.OnClickListener) (dialog, which) -> {
+                // boton de aceptar y cerrar pop-up
+
+                dialog.cancel();
+            });
+
+            builder.setMessage("Create una cuenta para añadir eventos.");
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }else{
+            //metemos el evento
+            db.collection(usuario).document().set(e).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if(task.isSuccessful()) {
+                        Intent i = new Intent(ActivityEvent.this, MainActivityCalendarioEvento.class);
+                        i.putExtra("usuario",usuario);
+                        startActivity(i);
+                    }
+                }
+            });
+        }
     }
 
     //metodo para coger la hora del sistema

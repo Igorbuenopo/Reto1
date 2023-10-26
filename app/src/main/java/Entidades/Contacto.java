@@ -1,5 +1,7 @@
 package Entidades;
 
+import android.net.Uri;
+
 import java.util.Locale;
 
 public class Contacto {

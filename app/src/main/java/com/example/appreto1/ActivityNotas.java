@@ -20,7 +20,7 @@ public class ActivityNotas extends AppCompatActivity {
 
     FloatingActionButton anyadirNota;
     SearchView buscar;
-    FloatingActionButton atrasNotas;
+    FloatingActionButton atrasNotas, calcu;
     RecyclerView recyclerNota;
     FirebaseFirestore db;
     NoteAdapter noteAdapter;
@@ -30,6 +30,7 @@ public class ActivityNotas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notas);
 
+        //recogemos el usuario
         Bundle bundle = getIntent().getExtras();
         usuario = bundle.getString("usuario");
 
@@ -37,6 +38,18 @@ public class ActivityNotas extends AppCompatActivity {
         buscar = findViewById(R.id.buscarNota);
 
         anyadirNota = findViewById(R.id.btnanyadirnota);
+        calcu = findViewById(R.id.btnnotacalcu);
+
+        //boton que va a la calculadora
+        calcu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ActivityNotas.this, ActivityCalcNote.class);
+                i.putExtra("usuario", usuario);
+                startActivity(i);
+            }
+        });
+        //boton que va al activity de añadir nota
         anyadirNota.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,6 +63,7 @@ public class ActivityNotas extends AppCompatActivity {
 
 
         atrasNotas = findViewById(R.id.btnnotasatras);
+        //boton de atras que vuelve al menu
         atrasNotas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,21 +73,23 @@ public class ActivityNotas extends AppCompatActivity {
             }
         });
 
-
+        //setea el recycler y el searchview
         setupRecyclerView();
         buscarView();
     }
 
+    //seteamos el recycler con las notas del usuario, ordenadas segun su fecha
     void setupRecyclerView(){
         db = FirebaseFirestore.getInstance();
         Query query  = db.collection(usuario+"notas").orderBy("time",Query.Direction.DESCENDING);
         FirestoreRecyclerOptions<Nota> options = new FirestoreRecyclerOptions.Builder<Nota>()
                 .setQuery(query,Nota.class).build();
         recyclerNota.setLayoutManager(new LinearLayoutManager(this));
-        noteAdapter = new NoteAdapter(options,this);
+        noteAdapter = new NoteAdapter(options, usuario, this);
         recyclerNota.setAdapter(noteAdapter);
     }
 
+    //funcion del searchview, tanto como entras en el search, como cuando cambias el texto de el
     void buscarView() {
         buscar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -91,13 +107,14 @@ public class ActivityNotas extends AppCompatActivity {
 
     }
 
+    //funcion del search que busca solo las notas, con lo que ponga
     public void textSearch(String s){
         Query query  = db.collection(usuario+"notas");
         FirestoreRecyclerOptions<Nota> firestoreRecyclerOptions =
                 new FirestoreRecyclerOptions.Builder<Nota>()
                         .setQuery(query.orderBy("titulo")
                                 .startAt(s).endAt(s+"~"), Nota.class).build();
-        noteAdapter = new NoteAdapter(firestoreRecyclerOptions, this);
+        noteAdapter = new NoteAdapter(firestoreRecyclerOptions, usuario, this);
         noteAdapter.startListening();
         recyclerNota.setAdapter(noteAdapter);
     }

@@ -36,6 +36,24 @@
     <string name="preguntaRegistro" >Are you not registered yet?</string>
     <string name="buttonRegistrarse" >REGISTER</string>
     <string name="ButtonPrivado" >GUEST MODE</string>
+
+    //Registrarse
+    <string name="registroNom">Registration</string>
+    <string name="aceptarRegistro">ACCEPT</string>
+
+    //calendario
+
+    <string name="lunes">Mo</string>
+    <string name="martes">Tu</string>
+    <string name="miercoles">We</string>
+    <string name="jueves">Th</string>
+    <string name="viernes">Fr</string>
+    <string name="sabado">Sa</string>
+    <string name="domingo">Su</string>
+
+
+
+
     //MainActivity2
 
     <string name="bienvenidoTv" >WELCOME!</string>
@@ -44,4 +62,22 @@
     <string name="main2Calculadora" >Calculator</string>
     <string name="main2Notas" >Notes</string>
     <string name="main2Cerrar" >Log out</string>
+
+
+    //Notas
+    <string name="notastexto">Notes</string>
+    <string name="anyadirnota">Add Note</string>
+    <string name="tituloNota">Title</string>
+    <string name="contenidoNota">Content</string>
+    <string name="guardarNota">SAVE</string>
+    <string name="eliminarNota">DELETE</string>
+
+    //Eventos
+    <string name="nombreEventos">Events</string>
+    <string name="crearevento">Create Event</string>
+    <string name="eventtitu">Title</string>
+    <string name="eventlugar">Place</string>
+    <string name="eventDesc">Description</string>
+
+
 </resources>

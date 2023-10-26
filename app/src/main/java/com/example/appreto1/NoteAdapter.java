@@ -17,10 +17,12 @@ import Entidades.Nota;
 
 public class NoteAdapter extends FirestoreRecyclerAdapter<Nota, NoteAdapter.NoteViewHolder> {
     Context context;
+    String usuario;
 
-    public NoteAdapter(FirestoreRecyclerOptions<Nota> options, Context context) {
+    public NoteAdapter(FirestoreRecyclerOptions<Nota> options, String usuario, Context context) {
         super(options);
         this.context = context;
+        this.usuario = usuario;
     }
     @NonNull
     @Override
@@ -40,6 +42,7 @@ public class NoteAdapter extends FirestoreRecyclerAdapter<Nota, NoteAdapter.Note
             i.putExtra("contenido", nota.getContenido());
             String docId = this.getSnapshots().getSnapshot(position).getId();
             i.putExtra("docId", docId);
+            i.putExtra("usuario", usuario);
             context.startActivity(i);
         });
     }

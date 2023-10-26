@@ -40,6 +40,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventViewHolder> {
     public void onBindViewHolder(@NonNull EventViewHolder holder, int position) {
         holder.tituloTextView.setText(listaEventos.get(position).getTitulo());
         holder.lugarTextView.setText(listaEventos.get(position).getLugar());
+        holder.descTextView.setText(listaEventos.get(position).getDescripcion());
         String minuto = String.valueOf(listaEventos.get(position).getMinuto());
         String hora = String.valueOf(listaEventos.get(position).getHora());
         if(minuto.length() == 1){

@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tvnotas"
-            android:text="Notas"
+            android:text="@string/notastexto"
             android:textSize="32sp"
             android:textStyle="bold" />
 
@@ -55,6 +55,15 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:src="@drawable/ic_add"
+        android:backgroundTint="#7777B8" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnnotacalcu"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/ic_calcu"
         android:backgroundTint="#7777B8" />
 
 

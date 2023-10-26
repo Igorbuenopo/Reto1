@@ -47,7 +47,7 @@ public class ActivityListaEventos extends AppCompatActivity implements EventAdap
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_eventos);
 
-
+        //recogemos usuario, fecha y lista de evntos
         Bundle bundle = getIntent().getExtras();
         listaEventos = (ArrayList<Evento>) bundle.getSerializable("lista");
         ano = bundle.getInt("año");
@@ -59,7 +59,7 @@ public class ActivityListaEventos extends AppCompatActivity implements EventAdap
         String eventoFech = tvEventoFech.getText().toString() + "\r\n" + dia + "/" + mes + "/" + ano;
         tvEventoFech.setText(eventoFech);
 
-
+        //cojemos solo los eventos del dia selecionado
         conseguirEventosDia(listaEventos);
 
 
@@ -67,7 +67,7 @@ public class ActivityListaEventos extends AppCompatActivity implements EventAdap
         anyadir = findViewById(R.id.btnanyadirevento);
         recyclerEvent = findViewById(R.id.recyclerEvent);
 
-
+        //boton que lleva al activity de añadir evento
         anyadir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,7 +81,7 @@ public class ActivityListaEventos extends AppCompatActivity implements EventAdap
             }
         });
 
-
+        //boton que vuelve para atras al calendario
         atras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,7 +95,7 @@ public class ActivityListaEventos extends AppCompatActivity implements EventAdap
         ;
     }
 
-
+    //funcion de conseguir eventos del dia
     void conseguirEventosDia(ArrayList<Evento> listaEventos) {
         for (int i = 0; i < listaEventos.size(); i++) {
             int diaE = listaEventos.get(i).getDia();
@@ -109,7 +109,7 @@ public class ActivityListaEventos extends AppCompatActivity implements EventAdap
         }
     }
 
-
+    //setear el recycler
     void setupRecyclerView() {
         recyclerEvent.setLayoutManager(new LinearLayoutManager(this));
         eventAdapter = new EventAdapter(listaEventosDia, usuario, this);
@@ -117,48 +117,68 @@ public class ActivityListaEventos extends AppCompatActivity implements EventAdap
     }
 
 
+    //funcion, si mantiene en un evento, le sale popup, que le dice si quiere eliminar evento, los invitado no pueden
     @Override
     public void OnItemLongClick(View v, String titulo) {
-        Log.d("mensaje", "holaa");
-        AlertDialog.Builder builder = new AlertDialog.Builder(ActivityListaEventos.this);
+        if(usuario.equals("Invitado")){
+            AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(ActivityListaEventos.this);
 
 
-        builder.setTitle("Login");
+            builder.setTitle("Error Invitado");
+
+            builder.setPositiveButton("Aceptar", (DialogInterface.OnClickListener) (dialog, which) -> {
+                // boton de aceptar y cerrar pop-up
+
+                dialog.cancel();
+            });
+
+            builder.setMessage("Create una cuenta para eliminar eventos.");
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }else {
 
 
-        builder.setPositiveButton("Si", (DialogInterface.OnClickListener) (dialog, which) -> {
-            // boton de aceptar y cerrar pop-up
-            db.collection(usuario).whereEqualTo("titulo", titulo).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if (task.isSuccessful()) {
-                        for (DocumentSnapshot docu : task.getResult()) {
-                            db.collection(usuario).document(docu.getId()).delete();
+            AlertDialog.Builder builder = new AlertDialog.Builder(ActivityListaEventos.this);
+
+
+            builder.setTitle("Login");
+
+
+            builder.setPositiveButton("Si", (DialogInterface.OnClickListener) (dialog, which) -> {
+                // boton de aceptar y cerrar pop-up
+                //primero recogemos el id del evento segun el titulo, y lo borramos con el id recogido
+                db.collection(usuario).whereEqualTo("titulo", titulo).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (DocumentSnapshot docu : task.getResult()) {
+                                db.collection(usuario).document(docu.getId()).delete();
+                            }
                         }
+                        Intent i = new Intent(ActivityListaEventos.this, MainActivityCalendarioEvento.class);
+                        i.putExtra("usuario", usuario);
+                        startActivity(i);
                     }
-                    Intent i = new Intent(ActivityListaEventos.this, MainActivityCalendarioEvento.class);
-                    i.putExtra("usuario", usuario);
-                    startActivity(i);
-                }
 
 
+                });
+
+
+                dialog.cancel();
             });
 
 
-            dialog.cancel();
-        });
+            builder.setNegativeButton("No", (DialogInterface.OnClickListener) (dialog, which) -> {
+                // boton de aceptar y cerrar pop-up
 
 
-        builder.setNegativeButton("No", (DialogInterface.OnClickListener) (dialog, which) -> {
-            // boton de aceptar y cerrar pop-up
+                dialog.cancel();
+            });
 
 
-            dialog.cancel();
-        });
-
-
-        builder.setMessage("¿Quieres borrar este evento?");
-        AlertDialog dialog = builder.create();
-        dialog.show();
+            builder.setMessage("¿Quieres borrar este evento?");
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
     }
 }

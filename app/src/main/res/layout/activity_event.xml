@@ -16,23 +16,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tvnotas"
-            android:text="Crear Evento"
+            android:text="@string/crearevento"
             android:textSize="32sp"
             android:textStyle="bold" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btnnotasatras"
+            android:id="@+id/bteventcreateatras"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:src="@drawable/ic_back"
             android:backgroundTint="#7777B8" />
     </RelativeLayout>
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center_horizontal"
     android:layout_below="@id/layout_crearEvento">
 
     <LinearLayout
@@ -40,26 +42,30 @@
         android:padding="8sp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
 
         <ImageView
             android:layout_gravity="center"
             android:id="@+id/imageView1"
             android:layout_width="50dp"
             android:layout_height="55dp"
-            app:srcCompat="@drawable/baseline_title_24"
-            app:tint="@color/azulLogo" />
+            app:srcCompat="@drawable/ic_titulo"
+            app:tint="@color/azulLogo"
+            android:layout_marginRight="@dimen/_6sdp"/>
 
         <EditText
             android:id="@+id/txtTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:textSize="@dimen/_20sdp"
-            android:hint="Titulo..."
+            android:textSize="@dimen/_18sdp"
+            android:inputType="text"
+            android:padding="@dimen/_8sdp"
+            android:hint="@string/eventtitu"
             android:background="@drawable/custom_edittext"
-            android:backgroundTint="@color/white"
-            ></EditText>
+            android:backgroundTint="@color/white"/>
+
 
     </LinearLayout>
     <LinearLayout
@@ -67,7 +73,8 @@
         android:padding="8sp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp">
 
         <ImageView
             android:layout_gravity="center"
@@ -75,15 +82,18 @@
             android:layout_width="50dp"
             android:layout_height="55dp"
             app:tint="@color/azulLogo"
-            app:srcCompat="@drawable/baseline_place_24" />
+            app:srcCompat="@drawable/ic_lugar"
+            android:layout_marginRight="@dimen/_6sdp"/>
 
         <EditText
             android:id="@+id/txtLugar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:textSize="@dimen/_20sdp"
-            android:hint="Lugar..."
+            android:textSize="@dimen/_18sdp"
+            android:inputType="text"
+            android:padding="@dimen/_8sdp"
+            android:hint="@string/eventlugar"
             android:background="@drawable/custom_edittext"
             android:backgroundTint="@color/white"
             ></EditText>
@@ -94,25 +104,31 @@
         android:padding="8sp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp">
 
         <ImageView
             android:layout_gravity="center"
             android:id="@+id/imageView3"
             android:layout_width="50dp"
             android:layout_height="55dp"
-            app:srcCompat="@drawable/baseline_edit_24"
-            app:tint="@color/azulLogo" />
+            app:srcCompat="@drawable/ic_desc"
+            app:tint="@color/azulLogo"
+            android:layout_marginRight="@dimen/_6sdp"/>
 
         <EditText
             android:id="@+id/txtDescripcion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:textSize="@dimen/_20sdp"
+            android:textSize="@dimen/_18sdp"
+            android:padding="@dimen/_8sdp"
+            android:hint="@string/eventDesc"
+            android:gravity="top"
             android:background="@drawable/custom_edittext"
             android:backgroundTint="@color/white"
-            android:minLines="6"
+            android:minLines="5"
+            android:maxLines="5"
             ></EditText>
 
     </LinearLayout>
@@ -122,22 +138,28 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="8sp"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_8sdp">
         <ImageView
             android:layout_gravity="center"
             android:id="@+id/imagenCl"
             android:layout_width="50dp"
             android:layout_height="55dp"
-            app:srcCompat="@drawable/baseline_calendar_month_24"
-            app:tint="@color/azulLogo" />
+            app:srcCompat="@drawable/ic_calendar"
+            app:tint="@color/azulLogo"
+            android:layout_marginRight="@dimen/_6sdp"/>
         <TextView
             android:id="@+id/txtFechaProv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/_30sdp"
-            android:gravity="top"
-            android:text=""
-    />
+            android:textSize="@dimen/_20sdp"
+            android:padding="@dimen/_6sdp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="11/11/2023"
+            android:clickable="false"
+            android:background="@drawable/custom_edittext"
+            android:backgroundTint="@color/white"/>
 
     </LinearLayout>
     <LinearLayout
@@ -145,42 +167,46 @@
         android:padding="8sp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp">
         <ImageView
             android:layout_gravity="center"
             android:id="@+id/imagenHora"
             android:layout_width="50dp"
             android:layout_height="55dp"
-            app:srcCompat="@drawable/baseline_access_time_24"
-            app:tint="@color/azulLogo" />
+            app:srcCompat="@drawable/ic_time"
+            app:tint="@color/azulLogo"
+            android:layout_marginRight="@dimen/_6sdp"/>
 
         <Button
             android:id="@+id/btnHora"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/_30sdp"
-            android:gravity="top"
+            android:textSize="@dimen/_28sdp"
+            android:gravity="center"
             android:text=""
-            android:backgroundTint="@color/azulLogo"></Button>
-</LinearLayout>
+            android:backgroundTint="@color/azulLogo"/>
+    </LinearLayout>
     <LinearLayout
         android:gravity="center"
         android:padding="8sp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_18sdp">
 
         <Button
             android:id="@+id/btnCrear"
-            android:layout_width="95dp"
+            android:padding="@dimen/_15sdp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:backgroundTint="#7777B8"
-            android:text="Crear Evento"
-           />
+            android:textSize="@dimen/_20sdp"
+            android:backgroundTint="@color/purple"
+            android:text="@string/aceptarRegistro" />
 
     </LinearLayout>
 
-</LinearLayout>
+    </LinearLayout>
     </RelativeLayout>

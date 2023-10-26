@@ -28,9 +28,18 @@
     <string name="preference_email_user">
 
     </string>
+    //calendario
+
+    <string name="lunes">L</string>
+    <string name="martes">M</string>
+    <string name="miercoles">X</string>
+    <string name="jueves">J</string>
+    <string name="viernes">V</string>
+    <string name="sabado">S</string>
+    <string name="domingo">D</string>
     //MainActivity
     <string name="atrasbotonCalen">Atrás</string>
-    
+
 
     <string name="login" >Inicar sesión</string>
 
@@ -41,14 +50,33 @@
     <string name="buttonRegistrarse" >REGISTRARSE</string>
     <string name="ButtonPrivado" >Modo invitado</string>
 
+    //Registrarse
+    <string name="registroNom">Registro</string>
+    <string name="aceptarRegistro">ACEPTAR</string>
+
     //MainActivity2
 
-    <string name="bienvenidoTv" >¡Bienvenido!</string>
+    <string name="bienvenidoTv">¡Bienvenido!</string>
     <string name="main2Calendario" >Calendario</string>
-    <string name="main2Contactos" >Contacto</string>
-    <string name="main2Calculadora" >Calculadora</string>
+    <string name="main2Contactos" >Contactos</string>
+    <string name="main2Calculadora">Calculadora</string>
     <string name="main2Notas" >Notas</string>
     <string name="main2Cerrar" >Cerrar sesión</string>
+
+    //Notas
+    <string name="notastexto">Notas</string>
+    <string name="anyadirnota">Añadir Nota</string>
+    <string name="tituloNota">Título</string>
+    <string name="contenidoNota">Contenido</string>
+    <string name="guardarNota">GUARDAR</string>
+    <string name="eliminarNota">ELIMINAR</string>
+
+    //Eventos
+    <string name="nombreEventos">Eventos</string>
+    <string name="crearevento">Crear Evento</string>
+    <string name="eventtitu">Título</string>
+    <string name="eventlugar">Lugar</string>
+    <string name="eventDesc">Descripción</string>
 
 
 

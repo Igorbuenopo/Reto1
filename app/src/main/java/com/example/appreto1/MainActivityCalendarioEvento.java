@@ -1,11 +1,13 @@
 package com.example.appreto1;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -186,15 +188,14 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
     @Override
     public void onItemClick(int position, String dayText) {
         if(!dayText.equals("")){
-            String message = "Selected Date "+dayText+" "+monthYearFromDate(UTILS.selectedDate);
-            Toast.makeText(this,message, Toast.LENGTH_LONG).show();
-            Intent i = new Intent(MainActivityCalendarioEvento.this, ActivityListaEventos.class);
-            i.putExtra("dia",Integer.valueOf(dayText));
-            i.putExtra("mes",UTILS.selectedDate.getMonth().getValue());
-            i.putExtra("año", UTILS.selectedDate.getYear());
-            i.putExtra("usuario", usuario);
-            i.putExtra("lista", (Serializable) listaEventos);
-            startActivity(i);
+                String message = "Selected Date " + dayText + " " + monthYearFromDate(UTILS.selectedDate);
+                Intent i = new Intent(MainActivityCalendarioEvento.this, ActivityListaEventos.class);
+                i.putExtra("dia", Integer.valueOf(dayText));
+                i.putExtra("mes", UTILS.selectedDate.getMonth().getValue());
+                i.putExtra("año", UTILS.selectedDate.getYear());
+                i.putExtra("usuario", usuario);
+                i.putExtra("lista", (Serializable) listaEventos);
+                startActivity(i);
         }
     }
 }
