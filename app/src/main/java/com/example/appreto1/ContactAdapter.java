@@ -28,7 +28,7 @@ public class ContactAdapter extends FirestoreRecyclerAdapter<Contacto, ContactAd
     @Override
     protected void onBindViewHolder(@NonNull ContactViewHolder holder, int position, @NonNull Contacto contacto) {
         holder.tituloTxt.setText(contacto.getNombre());
-        holder.numeroTxt.setText(String.valueOf(contacto.getNumero()));
+        holder.numeroTxt.setText(contacto.getNumero());
         holder.direccionTxt.setText(contacto.getDireccion());
 
     }
