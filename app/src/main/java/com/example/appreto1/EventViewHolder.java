@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class EventViewHolder extends RecyclerView.ViewHolder implements View.OnLongClickListener {
 
-
+    //clase de la view del evento
     public TextView tituloTextView;
     public TextView lugarTextView;
     public TextView horaTextView;
@@ -30,7 +30,7 @@ public class EventViewHolder extends RecyclerView.ViewHolder implements View.OnL
 
 
 
-
+    //funcion que sirve para que haga algo cada vez que se mantiene la view de cada evento
     @Override
     public boolean onLongClick(View v) {
         onLongItemListener.OnItemLongClick(v, (String) tituloTextView.getText());

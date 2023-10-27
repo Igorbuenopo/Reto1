@@ -24,6 +24,7 @@ public class NoteAdapter extends FirestoreRecyclerAdapter<Nota, NoteAdapter.Note
         this.context = context;
         this.usuario = usuario;
     }
+    //boton que crea la viewde cada nota
     @NonNull
     @Override
     public NoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -31,6 +32,7 @@ public class NoteAdapter extends FirestoreRecyclerAdapter<Nota, NoteAdapter.Note
         return new NoteViewHolder(view);
     }
 
+    //boton que añade la nota a la view, que implementa on onlisyener que lleva a editar nota
     @Override
     protected void onBindViewHolder(@NonNull NoteViewHolder holder, int position, @NonNull Nota nota) {
         holder.tituloTextView.setText(nota.getTitulo());
@@ -48,6 +50,7 @@ public class NoteAdapter extends FirestoreRecyclerAdapter<Nota, NoteAdapter.Note
     }
 
 
+    //clase de la view de notas
     class NoteViewHolder extends RecyclerView.ViewHolder{
 
         TextView tituloTextView, contentTextView, fechaTextView;

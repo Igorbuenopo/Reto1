@@ -54,11 +54,11 @@ public class ActivityContactos extends AppCompatActivity {
 
     //funcion con la que crea el recycler
      void setupRecyclerView() {
-         Query query = FirebaseFirestore.getInstance().collection("Contactos");
+        Query query = FirebaseFirestore.getInstance().collection("Contactos");
           FirestoreRecyclerOptions<Contacto> options = new FirestoreRecyclerOptions.Builder<Contacto>().setQuery(query,Contacto.class).build();
-           recyclerView.setLayoutManager(new LinearLayoutManager(this));
+          recyclerView.setLayoutManager(new LinearLayoutManager(this));
           contactAdapter = new ContactAdapter(options,this);
-         recyclerView.setAdapter(contactAdapter);
+          recyclerView.setAdapter(contactAdapter);
 
     }
     @Override

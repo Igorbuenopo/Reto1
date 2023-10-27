@@ -61,11 +61,9 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
         usuario = bundle.getString("usuario");
 
 
-        if(monthYearText.getText().toString() == "Back"){
+        if(monthYearText.getText().toString().equals("Back")){
             textoMes = false;
         }
-
-        Log.d("aaa", String.valueOf(listaEventos.size()));
 
         UTILS.selectedDate = LocalDate.now();
 
@@ -135,6 +133,7 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
 
     private void setMonthView() {
         monthYearText.setText(monthYearFromDate(UTILS.selectedDate));
+        monthYearText.setVisibility(View.VISIBLE);
         ArrayList<LocalDate> daysInMonth = daysInMonthArray(UTILS.selectedDate);
         ArrayList<Evento> eventoss = listaEventos;
         CalendarAdapter calendarAdapter = new CalendarAdapter(daysInMonth, eventoss, this);
@@ -176,7 +175,7 @@ public class MainActivityCalendarioEvento extends AppCompatActivity implements C
     private String monthYearFromDate(LocalDate date){
         String pais = "ES";
         String idioma = "es";
-        if(textoMes){
+        if(!textoMes){
             pais = "US";
             idioma = "en";
         }

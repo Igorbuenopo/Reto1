@@ -59,7 +59,8 @@
             android:textStyle="bold"
             android:textSize="20sp"
             android:textAlignment="center"
-            android:textColor="@color/purple" />
+            android:textColor="@color/purple"
+            android:visibility="invisible"/>
 
 
         <androidx.appcompat.widget.AppCompatButton

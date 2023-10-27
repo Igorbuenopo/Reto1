@@ -16,15 +16,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/topView"
-        android:layout_marginLeft="24sp"
+        android:layout_marginLeft="@dimen/_24sdp"
         android:layout_marginTop="-80sp"
-        android:layout_marginRight="25sp"
+        android:layout_marginRight="@dimen/_25sdp"
         android:columnCount="2"
         android:rowCount="4">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardCalend"
-            android:layout_width="@dimen/_82sdp"
+            android:layout_width="@dimen/_98sdp"
             android:layout_height="wrap_content"
             android:layout_row="1"
             android:layout_rowWeight="1"

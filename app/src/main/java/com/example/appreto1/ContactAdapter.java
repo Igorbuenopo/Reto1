@@ -25,14 +25,16 @@ public class ContactAdapter extends FirestoreRecyclerAdapter<Contacto, ContactAd
         this.context=context;
     }
 
+    //se crea cada contacto
     @Override
     protected void onBindViewHolder(@NonNull ContactViewHolder holder, int position, @NonNull Contacto contacto) {
         holder.tituloTxt.setText(contacto.getNombre());
-        holder.numeroTxt.setText(String.valueOf(contacto.getNumero()));
+        holder.numeroTxt.setText(contacto.getNumero());
         holder.direccionTxt.setText(contacto.getDireccion());
 
     }
 
+    //se crea la view de cada contacto
     @androidx.annotation.NonNull
     @Override
     public ContactViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -40,6 +42,7 @@ public class ContactAdapter extends FirestoreRecyclerAdapter<Contacto, ContactAd
         return new ContactViewHolder(view);
     }
 
+    //clase de la view de contacto
     class ContactViewHolder extends RecyclerView.ViewHolder{
         TextView tituloTxt,numeroTxt,direccionTxt;
         public ContactViewHolder(@NonNull View itemView){

@@ -10,6 +10,7 @@ import java.util.List;
 
 import Entidades.Evento;
 
+//view donde se mete el numro del mes
 public class CalendarViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
     public final TextView dayofMonth;
     private final CalendarAdapter.OnItemListener onItemListener;
@@ -23,6 +24,7 @@ public class CalendarViewHolder extends RecyclerView.ViewHolder implements View.
         itemView.setOnClickListener(this);
     }
 
+    //en cada numero se pone la funcion onclick
     @Override
     public void onClick(View view) {
         onItemListener.onItemClick(getAdapterPosition(), (String) dayofMonth.getText());

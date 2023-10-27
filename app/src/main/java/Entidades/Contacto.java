@@ -6,15 +6,14 @@ import java.util.Locale;
 
 public class Contacto {
     String nombre;
-    int numero;
+    String numero;
     String direccion;
 
 
-    public Contacto(String nombre, int numero, String direccion, String descripcion) {
+    public Contacto(String nombre, String numero, String direccion) {
         this.nombre = nombre;
         this.numero = numero;
         this.direccion = direccion;
-
     }
 
     public Contacto() {
@@ -37,11 +36,11 @@ public class Contacto {
         this.direccion = direccion;
     }
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 

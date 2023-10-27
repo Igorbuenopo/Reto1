@@ -28,6 +28,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventViewHolder> {
     }
 
 
+    //funcion que crea la view del evento
     @NonNull
     @Override
     public EventViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -35,7 +36,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventViewHolder> {
         return new EventViewHolder(view, onLongItemListener);
     }
 
-
+    //funcion que crea la tarjeta de cada evento
     @Override
     public void onBindViewHolder(@NonNull EventViewHolder holder, int position) {
         holder.tituloTextView.setText(listaEventos.get(position).getTitulo());
@@ -59,12 +60,14 @@ public class EventAdapter extends RecyclerView.Adapter<EventViewHolder> {
     }
 
 
+    //devuelve el numero de eventos de un usuario
     @Override
     public int getItemCount() {
         return listaEventos.size();
     }
 
 
+    //interfaz que implementa la funcion onItemlongclick
     public interface OnLongItemListener{
         void OnItemLongClick(View v , String titulo);
     }

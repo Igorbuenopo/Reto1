@@ -48,16 +48,9 @@ public class MainActivity2 extends AppCompatActivity {
         CardView salir = findViewById(R.id.cardLogout);
         CardView nota = findViewById(R.id.cardNota);
 
-        //firebase database initialise
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        //arraylist para guardar eventos de la base de datos
 
 
-
-      //listener que activa la recoleccion de datos de la base de datos
-
-
+        //boton que lleva al bloc de notas
         nota.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,38 +60,18 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
 
+        //boton que lleva al calendario
         calen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db.collection(usuario).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
 
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                //pasar datos a la clase Evento
-                                Evento evento = document.toObject(Evento.class);
-                                //guardar Evento en arraylist
-                                eventos.add(evento);
-
-
-                            }
-                            Intent cambio = new Intent(MainActivity2.this, MainActivityCalendarioEvento.class);
-                            cambio.putExtra("usuario", usuario);
-                            cambio.putExtra("lista", (Serializable) eventos);
-                            startActivity(cambio);
-                        }
-
-                    }
-
-                });
-
-
-
+                Intent cambio = new Intent(MainActivity2.this, MainActivityCalendarioEvento.class);
+                cambio.putExtra("usuario", usuario);
+                startActivity(cambio);
             }
         });
 
+        //boton que lleva a la calculadora
         calc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,6 +81,7 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
 
+        //boton que leva a la lista de contactos
         contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,6 +91,7 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
 
+        //boton que cierra sesion
         salir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

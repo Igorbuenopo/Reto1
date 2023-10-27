@@ -26,6 +26,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
         this.onItemListener = onItemListener;
     }
 
+    //crea la view de cada numerito del calendario
     @NonNull
     @Override
     public CalendarViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -36,6 +37,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
         return new CalendarViewHolder(view, onItemListener);
     }
 
+    //pone los numeros en el calendario
     @Override
     public void onBindViewHolder(@NonNull CalendarViewHolder holder, int position) {
         LocalDate date = daysOfMonth.get(position);
@@ -69,11 +71,13 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
         }
     }
 
+    //devuelve el numero de dias de cada mes
     @Override
     public int getItemCount() {
         return daysOfMonth.size();
     }
 
+    //interfaz que implementa la funcion onclick, que consiste en una accion cada ves que se clica en un dia
     public interface OnItemListener{
         void onItemClick(int position, String dayText);
     }

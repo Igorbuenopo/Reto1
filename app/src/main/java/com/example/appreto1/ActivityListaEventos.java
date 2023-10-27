@@ -141,7 +141,7 @@ public class ActivityListaEventos extends AppCompatActivity implements EventAdap
             AlertDialog.Builder builder = new AlertDialog.Builder(ActivityListaEventos.this);
 
 
-            builder.setTitle("Login");
+            builder.setTitle("Eliminar Evento");
 
 
             builder.setPositiveButton("Si", (DialogInterface.OnClickListener) (dialog, which) -> {
